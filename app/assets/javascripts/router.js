@@ -1,19 +1,16 @@
 // For more information see: http://emberjs.com/guides/routing/
 
-Todos.Router.map(function() {
-  this.resource('todos', { path: '/' }, function(){
-    
+App.Router.map(function() {
+  this.resource('people', function(){
+    this.route('person');
+  });
+  this.route('about');
+  this.route('skills');
+  this.resource('work', function(){
+    this.route('web');
+    this.route('front-end');
+    this.route('photography');
   });
 });
 
-Todos.TodosRoute = Ember.Route.extend({
-  model: function() {
-    return this.store.find('todo');
-  }
-});
 
-Todos.TodosIndexRoute = Ember.Route.extend({
-  model: function() {
-    return this.modelFor('todos');
-  }
-});

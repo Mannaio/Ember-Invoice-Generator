@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-EmberExample::Application.load_tasks
+EmberApplication::Application.load_tasks

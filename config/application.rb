@@ -58,6 +58,6 @@ module EmberExample
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    config.ember.app_name = 'Todos'
+    config.ember.app_name = 'Ember Application'
   end
 end

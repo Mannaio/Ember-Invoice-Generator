@@ -6,5 +6,5 @@
 //= require todos
 
 // for more details see: http://emberjs.com/guides/application/
-Todos = Ember.Application.create();
+App = Ember.Application.create();
 

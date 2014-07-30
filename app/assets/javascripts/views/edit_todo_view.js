@@ -1,7 +1,7 @@
-Todos.EditTodoView = Ember.TextField.extend({
-  didInsertElement: function() {
-    this.$().focus();
-  }
-});
+// App.EditTodoView = Ember.TextField.extend({
+//   didInsertElement: function() {
+//     this.$().focus();
+//   }
+// });
 
-Ember.Handlebars.helper('edit-todo', Todos.EditTodoView);
+// Ember.Handlebars.helper('edit-todo', App.EditTodoView);

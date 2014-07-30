@@ -2,11 +2,43 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Ember.js • TodoMVC</title>
+    <title>Ember.js</title>
     <%#= javascript_include_tag 'application' %>
     <%= javascript_include_tag "templates/todos" %>
   </head>
   <body>
+
+  <script type="text/x-handlebars">
+    <h2>About Me</h2>
+    {{#active-li currentWhen="about"}}
+      {{link-to 'About' 'about'}}
+    {{/active-li}}
+    {{#active-li currentWhen="work"}}
+      {{link-to 'Work' 'work'}}
+    {{/active-li}}
+    {{#active-li currentWhen="skills"}}
+      {{link-to 'Skills' 'skills'}}
+    {{/active-li}}
+    <hr>
+    
+    {{outlet}}
+  </script>
+  
+  <script type="text/x-handlebars" data-template-name="about">
+    About 
+  </script>
+  
+  <script type="text/x-handlebars" data-template-name="work">
+    work<br>
+    {{link-to 'Web' 'work.web'}}
+    {{link-to 'Front-end' 'work.front-end'}}
+    {{link-to 'Photography' 'work.photography'}}
+  </script>
+  
+  <script type="text/x-handlebars" data-template-name="skills">
+    skills<br>
+    {{link-to 'Visit /people/person' 'people.person'}}
+  </script>
     
   </body>
 </html>
