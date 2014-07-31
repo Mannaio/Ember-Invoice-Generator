@@ -9,19 +9,33 @@
   <body>
 
   <script type="text/x-handlebars">
-    <h2>About Me</h2>
-    {{#active-li currentWhen="about"}}
-      {{link-to 'About' 'about'}}
-    {{/active-li}}
-    {{#active-li currentWhen="work"}}
-      {{link-to 'Work' 'work'}}
-    {{/active-li}}
-    {{#active-li currentWhen="skills"}}
-      {{link-to 'Skills' 'skills'}}
-    {{/active-li}}
-    <hr>
-    
-    {{outlet}}
+    <section id="portfolio">
+      <header id="header">
+        <h2>Title</h2>
+        {{#active-li currentWhen="about"}}
+          {{link-to 'About' 'about'}}
+        {{/active-li}}
+        {{#active-li currentWhen="work"}}
+          {{link-to 'Work' 'work'}}
+        {{/active-li}}
+        {{#active-li currentWhen="skills"}}
+          {{link-to 'Skills' 'skills'}}
+        {{/active-li}}
+        {{#active-li currentWhen="blog"}}
+          {{link-to 'Blog' 'blog'}}
+        {{/active-li}}
+        {{#active-li currentWhen="people"}}
+          {{link-to 'Person' 'people.person'}}
+        {{/active-li}}
+      </header>
+      <section id="main">
+        {{outlet}}
+      </section>
+      <footer id="footer">
+       <hr>
+        This is the footer
+      </footer>
+    </section>
   </script>
   
   <script type="text/x-handlebars" data-template-name="about">
@@ -36,7 +50,20 @@
   </script>
   
   <script type="text/x-handlebars" data-template-name="skills">
-    skills<br>
+    skills
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="blog">
+    blog
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="people/person">
+    person<br>
+    {{link-to 'Visit /people' 'people'}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="people/index">
+    people<br>
     {{link-to 'Visit /people/person' 'people.person'}}
   </script>
     
