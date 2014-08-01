@@ -15,17 +15,14 @@
         {{#active-li currentWhen="about"}}
           {{link-to 'About' 'about'}}
         {{/active-li}}
-        {{#active-li currentWhen="work"}}
-          {{link-to 'Work' 'work'}}
-        {{/active-li}}
         {{#active-li currentWhen="skills"}}
           {{link-to 'Skills' 'skills'}}
         {{/active-li}}
         {{#active-li currentWhen="blog"}}
           {{link-to 'Blog' 'blog'}}
         {{/active-li}}
-        {{#active-li currentWhen="people"}}
-          {{link-to 'Person' 'people.person'}}
+        {{#active-li currentWhen="work"}}
+          {{link-to 'Work' 'work.photography'}}
         {{/active-li}}
       </header>
       <section id="main">
@@ -42,13 +39,6 @@
     About 
   </script>
   
-  <script type="text/x-handlebars" data-template-name="work">
-    work<br>
-    {{link-to 'Web' 'work.web'}}
-    {{link-to 'Front-end' 'work.front-end'}}
-    {{link-to 'Photography' 'work.photography'}}
-  </script>
-  
   <script type="text/x-handlebars" data-template-name="skills">
     skills
   </script>
@@ -57,14 +47,32 @@
     blog
   </script>
 
-  <script type="text/x-handlebars" data-template-name="people/person">
-    person<br>
-    {{link-to 'Visit /people' 'people'}}
+  <script type="text/x-handlebars" data-template-name="work/photography">
+    photography<br>
+    {{link-to 'Visit /work' 'work'}}
+    {{link-to 'Visit /web' 'work.web'}}
+    {{link-to 'Visit /front-end' 'work.front-end'}}
   </script>
 
-  <script type="text/x-handlebars" data-template-name="people/index">
-    people<br>
-    {{link-to 'Visit /people/person' 'people.person'}}
+  <script type="text/x-handlebars" data-template-name="work/index">
+    work<br>
+    {{link-to 'Visit /work' 'work'}}
+    {{link-to 'Visit /web' 'work.web'}}
+    {{link-to 'Visit /front-end' 'work.front-end'}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="work/web">
+    web<br>
+    {{link-to 'Visit /work' 'work'}}
+    {{link-to 'Visit /web' 'work.web'}}
+    {{link-to 'Visit /front-end' 'work.front-end'}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="work/front-end">
+    front-end<br>
+    {{link-to 'Visit /work' 'work'}}
+    {{link-to 'Visit /web' 'work.web'}}
+    {{link-to 'Visit /front-end' 'work.front-end'}}
   </script>
     
   </body>
