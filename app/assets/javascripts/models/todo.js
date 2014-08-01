@@ -1,23 +1,19 @@
-App.Pics = DS.Model.extend({
-  title: DS.attr('string'),
-  isCompleted: DS.attr('boolean')
+App.Person = DS.Model.extend({
+  name: DS.attr('string')
 });
 
 
-App.Pics.FIXTURES = [
+App.Person.FIXTURES = [
  {
-   id: 1,
-   title: 'Learn Ember.js',
-   isCompleted: true
+   id:1,
+   name: 'Tom'
  },
  {
    id: 2,
-   title: '...',
-   isCompleted: false
+   name: 'Villa'
  },
  {
    id: 3,
-   title: 'Profit!',
-   isCompleted: false
+   name: 'Laura'
  }
 ];

@@ -36,6 +36,11 @@
   </script>
   
   <script type="text/x-handlebars" data-template-name="about">
+    <ul>
+    {{#each person in model}}
+      <li>{{person.name}}</li>
+    {{/each}}
+  </ul>
     About 
   </script>
   
@@ -48,31 +53,55 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="work/photography">
+    {{#active-li currentWhen="work.photography"}}
+      {{link-to 'Visit /work' 'work.photography'}}
+    {{/active-li}}
+    {{#active-li currentWhen="work.web"}}
+      {{link-to 'Visit /web' 'work.web'}}
+    {{/active-li}}
+    {{#active-li currentWhen="work.front-end"}}
+      {{link-to 'Visit /front-end' 'work.front-end'}}
+    {{/active-li}}
     photography<br>
-    {{link-to 'Visit /work' 'work'}}
-    {{link-to 'Visit /web' 'work.web'}}
-    {{link-to 'Visit /front-end' 'work.front-end'}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="work/index">
+    {{#active-li currentWhen="work.photography"}}
+      {{link-to 'Visit /work' 'work.photography'}}
+    {{/active-li}}
+    {{#active-li currentWhen="work.web"}}
+      {{link-to 'Visit /web' 'work.web'}}
+    {{/active-li}}
+    {{#active-li currentWhen="work.front-end"}}
+      {{link-to 'Visit /front-end' 'work.front-end'}}
+    {{/active-li}}
     work<br>
-    {{link-to 'Visit /work' 'work'}}
-    {{link-to 'Visit /web' 'work.web'}}
-    {{link-to 'Visit /front-end' 'work.front-end'}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="work/web">
+    {{#active-li currentWhen="work.photography"}}
+      {{link-to 'Visit /work' 'work.photography'}}
+    {{/active-li}}
+    {{#active-li currentWhen="work.web"}}
+      {{link-to 'Visit /web' 'work.web'}}
+    {{/active-li}}
+    {{#active-li currentWhen="work.front-end"}}
+      {{link-to 'Visit /front-end' 'work.front-end'}}
+    {{/active-li}}
     web<br>
-    {{link-to 'Visit /work' 'work'}}
-    {{link-to 'Visit /web' 'work.web'}}
-    {{link-to 'Visit /front-end' 'work.front-end'}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="work/front-end">
+    {{#active-li currentWhen="work.photography"}}
+      {{link-to 'Visit /work' 'work.photography'}}
+    {{/active-li}}
+    {{#active-li currentWhen="work.web"}}
+      {{link-to 'Visit /web' 'work.web'}}
+    {{/active-li}}
+    {{#active-li currentWhen="work.front-end"}}
+      {{link-to 'Visit /front-end' 'work.front-end'}}
+    {{/active-li}}
     front-end<br>
-    {{link-to 'Visit /work' 'work'}}
-    {{link-to 'Visit /web' 'work.web'}}
-    {{link-to 'Visit /front-end' 'work.front-end'}}
   </script>
     
   </body>
