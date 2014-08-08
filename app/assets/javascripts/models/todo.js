@@ -10,7 +10,7 @@ App.Person.FIXTURES = [
  },
  {
    id: 2,
-   name: 'Villa'
+   name: 'Giorgio'
  },
  {
    id: 3,

@@ -7,3 +7,6 @@ App.Store = DS.Store.extend({
 });
 
 
+// App.Person.adapter = Ember.RESTAdapter.create();
+// App.Person.url = "api/people";
+// App.Person.collectionKey = "people";

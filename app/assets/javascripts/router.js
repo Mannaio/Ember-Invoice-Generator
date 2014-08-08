@@ -12,7 +12,6 @@ App.Router.map(function() {
 });
 
 
-
 App.AboutRoute = Ember.Route.extend({
   model: function() {
     return App.Person.find();
