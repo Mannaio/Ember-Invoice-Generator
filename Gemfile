@@ -21,6 +21,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'compass', '~> 1.0.1'
 
 gem 'ember-rails'
 gem 'ember-source', '1.4.0' # or the version you need
