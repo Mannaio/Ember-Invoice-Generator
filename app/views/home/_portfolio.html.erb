@@ -1,26 +1,26 @@
-  <script type="text/x-handlebars">
-    <section id="portfolio">
-      <header id="header">
-        <h2>Title</h2>
-        {{#active-li currentWhen="about"}}
-          {{link-to 'About' 'about'}}
-        {{/active-li}}
-        {{#active-li currentWhen="skills"}}
-          {{link-to 'Skills' 'skills'}}
-        {{/active-li}}
-        {{#active-li currentWhen="blog"}}
-          {{link-to 'Blog' 'blog'}}
-        {{/active-li}}
-        {{#active-li currentWhen="work"}}
-          {{link-to 'Work' 'work.photography'}}
-        {{/active-li}}
-      </header>
-      <section id="main">
-        {{outlet}}
-      </section>
-      <footer id="footer">
-       <hr>
-        This is the footer
-      </footer>
+<script type="text/x-handlebars">
+  <section id="portfolio">
+    <header id="header">
+      <h2>Title</h2>
+      {{#active-li currentWhen="about"}}
+        {{link-to 'About' 'about'}}
+      {{/active-li}}
+      {{#active-li currentWhen="skills"}}
+        {{link-to 'Skills' 'skills'}}
+      {{/active-li}}
+      {{#active-li currentWhen="blog"}}
+        {{link-to 'Blog' 'blog'}}
+      {{/active-li}}
+      {{#active-li currentWhen="work"}}
+        {{link-to 'Work' 'work.photography'}}
+      {{/active-li}}
+    </header>
+    <section id="main">
+      {{outlet}}
     </section>
-  </script>
+    <footer id="footer">
+     <hr>
+      This is the footer
+    </footer>
+  </section>
+</script>
