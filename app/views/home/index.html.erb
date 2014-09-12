@@ -12,58 +12,7 @@
   <%= render 'about' %>
   <%= render 'blog' %>
   <%= render 'skills' %>
+  <%= render 'work' %>
 
-  <script type="text/x-handlebars" data-template-name="work/photography">
-    {{#active-li currentWhen="work.photography"}}
-      {{link-to 'Visit /work' 'work.photography'}}
-    {{/active-li}}
-    {{#active-li currentWhen="work.web"}}
-      {{link-to 'Visit /web' 'work.web'}}
-    {{/active-li}}
-    {{#active-li currentWhen="work.front-end"}}
-      {{link-to 'Visit /front-end' 'work.front-end'}}
-    {{/active-li}}
-    photography<br>
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="work/index">
-    {{#active-li currentWhen="work.photography"}}
-      {{link-to 'Visit /work' 'work.photography'}}
-    {{/active-li}}
-    {{#active-li currentWhen="work.web"}}
-      {{link-to 'Visit /web' 'work.web'}}
-    {{/active-li}}
-    {{#active-li currentWhen="work.front-end"}}
-      {{link-to 'Visit /front-end' 'work.front-end'}}
-    {{/active-li}}
-    work<br>
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="work/web">
-    {{#active-li currentWhen="work.photography"}}
-      {{link-to 'Visit /work' 'work.photography'}}
-    {{/active-li}}
-    {{#active-li currentWhen="work.web"}}
-      {{link-to 'Visit /web' 'work.web'}}
-    {{/active-li}}
-    {{#active-li currentWhen="work.front-end"}}
-      {{link-to 'Visit /front-end' 'work.front-end'}}
-    {{/active-li}}
-    web<br>
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="work/front-end">
-    {{#active-li currentWhen="work.photography"}}
-      {{link-to 'Visit /work' 'work.photography'}}
-    {{/active-li}}
-    {{#active-li currentWhen="work.web"}}
-      {{link-to 'Visit /web' 'work.web'}}
-    {{/active-li}}
-    {{#active-li currentWhen="work.front-end"}}
-      {{link-to 'Visit /front-end' 'work.front-end'}}
-    {{/active-li}}
-    front-end<br>
-  </script>
-    
   </body>
 </html>
