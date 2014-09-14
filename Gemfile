@@ -25,6 +25,7 @@ gem 'compass', '~> 1.0.1'
 
 gem 'ember-rails'
 gem 'ember-source', '1.4.0' # or the version you need
+gem 'foundation-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

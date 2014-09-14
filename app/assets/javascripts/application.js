@@ -8,3 +8,5 @@
 // for more details see: http://emberjs.com/guides/application/
 App = Ember.Application.create();
 
+
+$(function(){ $(document).foundation(); });
