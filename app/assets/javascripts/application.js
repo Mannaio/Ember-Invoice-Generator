@@ -11,9 +11,12 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require foundation
-//= require_tree .
-$(function() {
-  $(document).foundation();
-});
+//= require handlebars
+//= require ember
+//= require ember-data
+//= require_self
+//= require todos
+
+App = Ember.Application.create();
+
+$(function(){ $(document).foundation(); });
