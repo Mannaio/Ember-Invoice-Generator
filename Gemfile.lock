@@ -56,7 +56,7 @@ GEM
       sass (>= 3.3.0, < 3.5)
     compass-import-once (1.0.5)
       sass (>= 3.2, < 3.5)
-    ember-data-source (1.0.0.beta.9)
+    ember-data-source (1.0.0.beta.10)
       ember-source
     ember-rails (0.15.0)
       active_model_serializers
@@ -72,6 +72,9 @@ GEM
     erubis (2.7.0)
     execjs (2.2.1)
     ffi (1.9.3)
+    foundation-rails (5.4.4.0)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     handlebars-source (1.3.0)
     hike (1.2.3)
     i18n (0.6.11)
@@ -114,7 +117,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    sass (3.4.3)
+    sass (3.4.4)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -143,6 +146,7 @@ DEPENDENCIES
   compass (~> 1.0.1)
   ember-rails
   ember-source (= 1.4.0)
+  foundation-rails (~> 5.4.4.0)
   jquery-rails
   rails (= 3.2.16)
   sass-rails (~> 3.2.3)
