@@ -19,8 +19,4 @@
 
 App = Ember.Application.create();
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master_foundation
 $(function(){ $(document).foundation(); });
