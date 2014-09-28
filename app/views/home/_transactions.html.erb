@@ -1,7 +1,17 @@
 <script type="text/x-handlebars" data-template-name='transactions'>
   <div class="row">
     <div class="large-12 columns">
-      {{#link-to "transactions.create" class="button"}}Aggiungi riga attività{{/link-to}}
+	<table class="table table-bordered table-hover">
+		<tr><th>Title 1</th><th>Title 2</th></tr>
+		{{#each model}}
+			{{#if editable}}
+			 <tr><td>{{view Em.TextArea valueBinding=primary class="form-control"}}</td><td>{{view Em.TextArea valueBinding=secondary class="form-control"}}</td><td><button class="btn btn-info" {{action update this}}>Update</button></td></td></tr>
+			{{else}}
+			<tr><td>{{primary}}</td><td>{{secondary}}</td><td ><button class="btn btn-warning" {{action edit this}}>Edit</button></td><td><button class="btn btn-danger"{{action remove this}}>Delete</button></td></tr>
+			{{/if}}
+		{{/each}}
+		<tr><td>{{view Em.TextArea valueBinding=newThread.primary class="form-control"}}</td><td>{{view Em.TextArea valueBinding=newThread.secondary class="form-control"}}</td><td><button class="btn btn-success" {{action add this}}>Add</button></td></td></tr>
+	</table>
     </div>
   </div>
 </script>
