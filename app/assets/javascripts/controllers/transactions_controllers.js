@@ -1,5 +1,5 @@
 App.TransactionsController=Ember.ArrayController.extend({
-	
+
 	newThread:function(){
 		return {primary:null,secondary:null,weight:null};
 		}.property(),
@@ -12,19 +12,23 @@ App.TransactionsController=Ember.ArrayController.extend({
 		},
 		
 	update:function(ob){
-				this.map(function(item,index){
-					if(ob.id===item.id)
-                      Em.set(item,'editable',false);
-                });
+		this.map(function(item,index){
+			if(ob.id===item.id)
+				Em.set(item,'editable',false);
+      });
 		},
 		
 	remove:function(ob){
-				this.removeObject(ob);
+		this.removeObject(ob);
 		},
 		
 	add:function(){
-				this.addObject(this.get('newThread'));
-                this.set('newThread',{primary:null,secondary:null});
+		this.addObject(this.get('newThread'));
+    this.set('newThread',{quantity:null,primary:null,secondary:null});
 		}
 
 });
+
+// App.TransactionsController = Ember.ObjectController.extend({
+//   names: ["Yehuda", "Tom"]
+// });

@@ -1,17 +1,41 @@
 <script type="text/x-handlebars" data-template-name='transactions'>
   <div class="row">
     <div class="large-12 columns">
-	<table class="table table-bordered table-hover">
-		<tr><th>Title 1</th><th>Title 2</th></tr>
-		{{#each model}}
-			{{#if editable}}
-			 <tr><td>{{view Em.TextArea valueBinding=primary class="form-control"}}</td><td>{{view Em.TextArea valueBinding=secondary class="form-control"}}</td><td><button class="btn btn-info" {{action update this}}>Update</button></td></td></tr>
-			{{else}}
-			<tr><td>{{primary}}</td><td>{{secondary}}</td><td ><button class="btn btn-warning" {{action edit this}}>Edit</button></td><td><button class="btn btn-danger"{{action remove this}}>Delete</button></td></tr>
-			{{/if}}
-		{{/each}}
-		<tr><td>{{view Em.TextArea valueBinding=newThread.primary class="form-control"}}</td><td>{{view Em.TextArea valueBinding=newThread.secondary class="form-control"}}</td><td><button class="btn btn-success" {{action add this}}>Add</button></td></td></tr>
-	</table>
+    	<table class="table table-bordered table-hover">
+    		<tr>
+          <th>Quantita Merce</th>
+          <th>Tariffa</th>
+          <th>Total</th>
+        </tr>
+    		{{#each model}}
+    			{{#if editable}}
+    			 <tr>
+             <td>{{view Ember.TextField valueBinding=quantita type="number" min ="1" autofocus="autofocus"}}</td>
+             <td>{{view Em.TextArea valueBinding=tariffa}}</td>
+             <td>{{view Em.TextField valueBinding=totale}}</td>
+             <td><button {{action update this}}>Update</button></td>
+           </tr>
+    			{{else}}
+    			<tr>
+            <td>{{quantita}}</td>
+            <td>{{tariffa}}</td>
+            <td>{{totale}}</td>
+            <td >
+              <button {{action edit this}}>Edit</button>
+            </td>
+            <td>
+              <button {{action remove this}}>Delete</button>
+            </td>
+          </tr>
+    			{{/if}}
+    		{{/each}}
+    		<tr>
+          <td>{{view Em.TextArea valueBinding=newThread.quantita}}</td>
+          <td>{{view Em.TextArea valueBinding=newThread.tariffa }}</td>
+          <td>{{view Em.TextField valueBinding=newThread.totale }}</td>
+          <td><button {{action add this}}>Add</button></td>
+        </tr>
+    	</table>
     </div>
   </div>
 </script>
