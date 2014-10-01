@@ -1,5 +1,8 @@
 App.TransactionsController=Ember.ArrayController.extend({
 
+	tariffa     : ['140', '200'],
+	perc	    : ['4%', '10%', '22%'],
+
 	newThread:function(){
 		return {primary:null,secondary:null,weight:null};
 		}.property(),
@@ -29,6 +32,3 @@ App.TransactionsController=Ember.ArrayController.extend({
 
 });
 
-// App.TransactionsController = Ember.ObjectController.extend({
-//   names: ["Yehuda", "Tom"]
-// });
