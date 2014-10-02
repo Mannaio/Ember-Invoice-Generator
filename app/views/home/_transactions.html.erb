@@ -3,9 +3,9 @@
     <div class="large-12 columns">
     	<table class="table table-bordered table-hover">
     		<tr>
-          <th>Quantita Merce</th>
+          <th>Merce</th>
           <th>Tariffa</th>
-          <th>Totale Imponibile</th>
+          <th>Tot Imponibile</th>
           <th>Iva %</th>
           <th>Iva</th>
           <th>Totale</th>
@@ -14,21 +14,21 @@
     			{{#if editable}}
     			 <tr>
              <td>{{view Ember.TextField valueBinding=quantita type="number" min ="1" autofocus="autofocus"}}</td>
-             <td>{{view Ember.Select prompt="Seleziona Tariffa" content=tariffa}}</td>
+             <td>{{view Ember.Select prompt="Tariffa" content=selectContentType }}</td>
              <td>{{view Em.TextField valueBinding=totale}}</td>
              <td>{{view Ember.Select prompt="Iva" content=perc}}</td>
              <td>{{view Em.TextField valueBinding=iva}}</td>
-             <td>{{view Em.TextField valueBinding=totale}}</td>
+             <td>{{view Em.TextField valueBinding=risultato}}</td>
              <td><button {{action update this}}>Update</button></td>
            </tr>
     			{{else}}
     			<tr>
             <td>{{quantita}}</td>
             <td>{{tariffa}}</td>
-            <td>{{imponibile}}</td>
-            <td>Iva %</td>
             <td>{{totale}}</td>
-            <td>{{totale}}</td>
+            <td>{{perc}}</td>
+            <td>{{iva}}</td>
+            <td>{{risultato}}</td>
             <td >
               <button {{action edit this}}>Edit</button>
             </td>
@@ -39,12 +39,12 @@
     			{{/if}}
     		{{/each}}
     		<tr>
-          <td>{{view Em.TextArea valueBinding=newThread.quantita}}</td>
-          <td>{{view Ember.Select prompt="Seleziona Tariffa" content=tariffa}}</td>
-          <td>{{view Em.TextField valueBinding=totale}}</td>
+          <td>{{view Em.TextField type="number" min="1" valueBinding=newThread.quantita}}</td>
+          <td>{{view Ember.Select prompt="Tariffa" content=selectContentType optionValuePath="content.value" optionLabelPath="content.label"}}</td>
+          <td>{{view Em.TextField valueBinding=newThread.totale}}</td>
           <td>{{view Ember.Select prompt="Iva" content=perc}}</td>
-          <td>{{view Em.TextField valueBinding=newThread.totale }}</td>
-          <td>{{view Em.TextField valueBinding=newThread.totale }}</td>
+          <td>{{view Em.TextField valueBinding=newThread.iva }}</td>
+          <td>{{view Em.TextField valueBinding=newThread.risultato }}</td>
           <td><button {{action add this}}>Add</button></td>
         </tr>
     	</table>

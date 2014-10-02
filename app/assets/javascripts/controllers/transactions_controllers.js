@@ -1,10 +1,19 @@
 App.TransactionsController=Ember.ArrayController.extend({
 
-	tariffa     : ['140', '200'],
-	perc	    : ['4%', '10%', '22%'],
+	// tariffa     : ['140', '200'],
+	// perc	    	: ['4%', '10%', '22%'],
+
+	selectContentType: null,
+
+  selectContentType: [
+    {label: "All", value: "all"},
+    {label: "Text", value: "text"},
+    {label: "Image", value: "image"}
+  ],
+
 
 	newThread:function(){
-		return {primary:null,secondary:null,weight:null};
+		return {quantita:null,tariffa:null,totale:null,weight:null};
 		}.property(),
 		
 	edit:function(ob){
@@ -27,7 +36,7 @@ App.TransactionsController=Ember.ArrayController.extend({
 		
 	add:function(){
 		this.addObject(this.get('newThread'));
-    this.set('newThread',{quantity:null,primary:null,secondary:null});
+    this.set('newThread',{quantita:null,tariffa:null,totale:null,weight:null});
 		}
 
 });
