@@ -3,13 +3,20 @@ App.TransactionsController=Ember.ArrayController.extend({
 	// tariffa     : ['140', '200'],
 	// perc	    	: ['4%', '10%', '22%'],
 
-	selectContentType: null,
+   selectContentTariffa: null,
+   selectContentIva: null,
 
-  selectContentType: [
-    {label: "All", value: "all"},
-    {label: "Text", value: "text"},
-    {label: "Image", value: "image"}
-  ],
+   selectContentTariffa: [
+     {label: "180", value: "180"},
+     {label: "200", value: "200"},
+     {label: "300", value: "300"}
+   ],
+
+   selectContentIva: [
+     {label: "180", value: "180"},
+     {label: "200", value: "200"},
+     {label: "300", value: "300"}
+   ],
 
 
 	newThread:function(){

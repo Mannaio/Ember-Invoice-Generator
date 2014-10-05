@@ -14,9 +14,9 @@
     			{{#if editable}}
     			 <tr>
              <td>{{view Ember.TextField valueBinding=quantita type="number" min ="1" autofocus="autofocus"}}</td>
-             <td>{{view Ember.Select prompt="Tariffa" content=selectContentType }}</td>
+             <td>{{view Ember.Select prompt="Tariffa" contentBinding=selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" selectionBinding="selectContentTariffa"}}</td>
              <td>{{view Em.TextField valueBinding=totale}}</td>
-             <td>{{view Ember.Select prompt="Iva" content=perc}}</td>
+             <td>{{view Ember.Select prompt="Iva" content=selectContentIva optionValuePath="content.value" optionLabelPath="content.label"}}</td>
              <td>{{view Em.TextField valueBinding=iva}}</td>
              <td>{{view Em.TextField valueBinding=risultato}}</td>
              <td><button {{action update this}}>Update</button></td>
@@ -40,9 +40,9 @@
     		{{/each}}
     		<tr>
           <td>{{view Em.TextField type="number" min="1" valueBinding=newThread.quantita}}</td>
-          <td>{{view Ember.Select prompt="Tariffa" content=selectContentType optionValuePath="content.value" optionLabelPath="content.label"}}</td>
+          <td>{{view Ember.Select prompt="Tariffa" content=selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label"}}</td>
           <td>{{view Em.TextField valueBinding=newThread.totale}}</td>
-          <td>{{view Ember.Select prompt="Iva" content=perc}}</td>
+          <td>{{view Ember.Select prompt="Iva" content=selectContentIva optionValuePath="content.value" optionLabelPath="content.label"}}</td>
           <td>{{view Em.TextField valueBinding=newThread.iva }}</td>
           <td>{{view Em.TextField valueBinding=newThread.risultato }}</td>
           <td><button {{action add this}}>Add</button></td>
