@@ -1,8 +1,8 @@
 <script type="text/x-handlebars" data-template-name='transactions'>
   <div class="row">
     <div class="large-12 columns">
-    	<table class="table table-bordered table-hover">
-    		<tr>
+      <table class="table table-bordered table-hover">
+        <tr>
           <th>Merce</th>
           <th>Tariffa</th>
           <th>Tot Imponibile</th>
@@ -10,44 +10,44 @@
           <th>Iva</th>
           <th>Totale</th>
         </tr>
-    		{{#each model}}
-    			{{#if editable}}
-    			 <tr>
-             <td>{{view Ember.TextField valueBinding=quantita type="number" min ="1" autofocus="autofocus"}}</td>
-             <td>{{view Ember.Select prompt="Tariffa" contentBinding=selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" selectionBinding="selectContentTariffa"}}</td>
-             <td>{{view Em.TextField valueBinding=totale}}</td>
-             <td>{{view Ember.Select prompt="Iva" content=selectContentIva optionValuePath="content.value" optionLabelPath="content.label"}}</td>
-             <td>{{view Em.TextField valueBinding=iva}}</td>
-             <td>{{view Em.TextField valueBinding=risultato}}</td>
-             <td><button {{action update this}}>Update</button></td>
+        {{#each item in model}}
+          {{#if item.editable}}
+           <tr>
+             <td>{{view Ember.TextField valueBinding=item.quantita type="number" min ="1" autofocus="autofocus"}}</td>
+             <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" selectionBinding="item.selectContentTariffa"}}</td>
+             <td>{{view Em.TextField valueBinding=item.totale}}</td>
+             <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" selectionBinding="item.selectContentIva"}} </td>
+             <td>{{view Em.TextField valueBinding=item.iva}}</td>
+             <td>{{view Em.TextField valueBinding=item.risultato}}</td>
+             <td><button {{action update item}}>Update</button></td>
            </tr>
-    			{{else}}
-    			<tr>
-            <td>{{quantita}}</td>
-            <td>{{tariffa}}</td>
-            <td>{{totale}}</td>
-            <td>{{perc}}</td>
-            <td>{{iva}}</td>
-            <td>{{risultato}}</td>
+          {{else}}
+          <tr>
+            <td>{{item.quantita}}</td>
+            <td>{{item.selectContentTariffa}}</td>
+            <td>{{item.totale}}</td>
+            <td>{{item.selectContentIva}}</td>
+            <td>{{item.iva}}</td>
+            <td>{{item.risultato}}</td>
             <td >
-              <button {{action edit this}}>Edit</button>
+              <button {{action edit item}}>Edit</button>
             </td>
             <td>
-              <button {{action remove this}}>Delete</button>
+              <button {{action remove item}}>Delete</button>
             </td>
           </tr>
-    			{{/if}}
-    		{{/each}}
-    		<tr>
+          {{/if}}
+        {{/each}}
+        <tr>
           <td>{{view Em.TextField type="number" min="1" valueBinding=newThread.quantita}}</td>
-          <td>{{view Ember.Select prompt="Tariffa" content=selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label"}}</td>
+          <td>{{view Ember.Select prompt="Tariffa" content=selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" selectionBinding="newThread.selectContentTariffa"}}</td>
           <td>{{view Em.TextField valueBinding=newThread.totale}}</td>
-          <td>{{view Ember.Select prompt="Iva" content=selectContentIva optionValuePath="content.value" optionLabelPath="content.label"}}</td>
+          <td>{{view Ember.Select prompt="Iva" content=selectContentIva optionValuePath="content.value" optionLabelPath="content.label" selectionBinding="newThread.selectContentIva"}}</td>
           <td>{{view Em.TextField valueBinding=newThread.iva }}</td>
           <td>{{view Em.TextField valueBinding=newThread.risultato }}</td>
-          <td><button {{action add this}}>Add</button></td>
+          <td><button {{action add item}}>Add</button></td>
         </tr>
-    	</table>
+      </table>
     </div>
   </div>
 </script>
