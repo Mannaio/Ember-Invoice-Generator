@@ -10,13 +10,3 @@ App.IndexRoute = Ember.Route.extend({
     }
 });
 
-
-// App.TransactionsRoute=Ember.Route.extend({
-//     model:function(){
-//       return [
-//         {id:1,quantita:"Input 1",tariffa:null,totale: "Input"},
-//         {id:2,quantita:"Input 1",tariffa:null,totale: "Input"} ];
-//     }
-// });
-
-
