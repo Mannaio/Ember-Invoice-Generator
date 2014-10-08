@@ -21,15 +21,15 @@ App.TransactionsController=Ember.ArrayController.extend({
 		}.property(),
 		
 	edit:function(ob){
-		this.map(function(item,index){
-			if(ob.id===item.id)
+		this.forEach(function(item){
+			if(ob === item)
 				Em.set(item,'editable',true);
 			});
 		},
 		
 	update:function(ob){
-		this.map(function(item,index){
-			if(ob.id===item.id)
+		this.forEach(function(item){
+			if(ob === item)
 				Em.set(item,'editable',false);
       });
 		},
