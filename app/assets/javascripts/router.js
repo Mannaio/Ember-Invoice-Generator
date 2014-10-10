@@ -5,8 +5,11 @@ App.Router.map(function(){
 });
 
 App.IndexRoute = Ember.Route.extend({
-    redirect: function(){
-      this.transitionTo('transactions');
-    }
+  redirect: function(){
+    this.transitionTo('transactions');
+  }
 });
+
+
+
 

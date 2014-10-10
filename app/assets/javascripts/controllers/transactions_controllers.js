@@ -41,11 +41,10 @@ App.TransactionsController=Ember.ArrayController.extend({
 	add:function(){
 		this.addObject(this.get('newThread'));
     this.set('newThread',{quantita:null,tariffa:null,totale:null});
-		}
+		},
 
-  // total: function(){
-  //   return this.get('newThread.quantita') * this.get('newThread.selectContentTariffa');
-  // }.property('newThread.quantita', 'newThread.selectContentTariffa')
+  total: function(){
+    return this.get('newThread.quantita') * this.get('newThread.selectContentTariffa');
+  }.property('newThread.quantita', 'newThread.selectContentTariffa')
 
 });
-

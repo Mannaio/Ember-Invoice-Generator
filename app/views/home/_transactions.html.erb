@@ -29,7 +29,7 @@
             <td>{{item.selectContentIva}}</td>
             <td>{{item.iva}}</td>
             <td>{{item.risultato}}</td>
-            <td >
+            <td>
               <button {{action edit item}}>Edit</button>
             </td>
             <td>
@@ -41,11 +41,26 @@
         <tr>
           <td>{{view Em.TextField type="number" min="1" valueBinding=newThread.quantita}}</td>
           <td>{{view Ember.Select prompt="Tariffa" content=selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" valueBinding=newThread.selectContentTariffa}}</td>
-          <td>{{view Em.TextField valueBinding=newThread.totale}}</td>
+          <td>{{#view "totale"}}{{total}}{{/view}}</td>
           <td>{{view Ember.Select prompt="Iva" content=selectContentIva optionValuePath="content.value" optionLabelPath="content.label" valueBinding=newThread.selectContentIva}}</td>
           <td>{{view Em.TextField valueBinding=newThread.iva }}</td>
           <td>{{view Em.TextField valueBinding=newThread.risultato }}</td>
           <td><button {{action add item}}>Add</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <table class="table table-bordered table-hover">
+        <tr>
+          <th id="first">Totale Imponibile</th>
+          <th>{{view Em.TextField valueBinding=newThread.iva }}</th>
+          <th id="third">Totale Iva</th>
+          <th>{{view Em.TextField valueBinding=newThread.iva }}</th>
+          <th></th>
+          <th></th>
+          <th></th>
         </tr>
       </table>
     </div>
