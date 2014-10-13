@@ -14,7 +14,7 @@
           {{#if item.editable}}
            <tr>
              <td>{{view Ember.TextField valueBinding=item.quantita type="number" min ="1" autofocus="autofocus"}}</td>
-             <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" valueBinding="item.selectContentTariffa"}}</td>
+             <td>{{view Ember.Select prompt="Scegli Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" valueBinding="item.selectContentTariffa"}}</td>
              <td>{{view Em.TextField valueBinding=item.totale}}</td>
              <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" valueBinding="item.selectContentIva"}} </td>
              <td>{{view Em.TextField valueBinding=item.iva}}</td>
