@@ -4,15 +4,15 @@ App.TransactionsController=Ember.ArrayController.extend({
    selectContentIva: null,
 
    selectContentTariffa: [
-     {label: "180", value: "180"},
-     {label: "200", value: "200"},
-     {label: "300", value: "300"}
+     {label: "Developer", value: "220"},
+     {label: "Junior", value: "250"},
+     {label: "Senior", value: "350"}
    ],
 
    selectContentIva: [
-     {label: "180", value: "180"},
-     {label: "200", value: "200"},
-     {label: "300", value: "300"}
+     {label: "IVA 10%", value: "10"},
+     {label: "IVA 22%", value: "22"},
+     {label: "IVA 4%", value: "4"}
    ],
 
 
