@@ -19,7 +19,7 @@ App.TransactionsController=Ember.ArrayController.extend({
 	  total:null,
       selectContentTariffa:null,
       quantita:null
-   },
+    },
 
 
 	newThread:function(){
