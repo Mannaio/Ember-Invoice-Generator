@@ -1,7 +1,7 @@
 App.TransactionsController=Ember.ArrayController.extend({
 
-   selectContentTariffa: null,
-   selectContentIva: null,
+   // selectContentTariffa: null,
+   // selectContentIva: null,
 
    selectContentTariffa: [
      {label: "180", value: "180"},
@@ -15,9 +15,15 @@ App.TransactionsController=Ember.ArrayController.extend({
      {label: "300", value: "300"}
    ],
 
+	newThread:{
+	  total:null,
+      selectContentTariffa:null,
+      quantita:null
+   },
+
 
 	newThread:function(){
-		return {quantita:null,tariffa:null,totale:null,weight:null};
+		return {quantita:null,selectContentTariffa:null,total:null,selectContentIva:null};
 		}.property(),
 		
 	edit:function(ob){
@@ -31,7 +37,7 @@ App.TransactionsController=Ember.ArrayController.extend({
 		this.forEach(function(item){
 			if(ob === item)
 				Em.set(item,'editable',false);
-      });
+      		});	
 		},
 		
 	remove:function(ob){
@@ -40,11 +46,8 @@ App.TransactionsController=Ember.ArrayController.extend({
 		
 	add:function(){
 		this.addObject(this.get('newThread'));
-    this.set('newThread',{quantita:null,tariffa:null,totale:null});
+    	this.set('newThread',{quantita:null,selectContentTariffa:null,total:null,selectContentIva:null});
 		},
 
-  total: function(){
-    return this.get('newThread.quantita') * this.get('newThread.selectContentTariffa');
-  }.property('newThread.quantita', 'newThread.selectContentTariffa')
 
 });

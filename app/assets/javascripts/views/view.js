@@ -1,12 +1,11 @@
-App.TotaleView=Ember.View.extend({
-  tagName: 'div',
-  elementId: ['totale']
+App.TotalView = Ember.View.extend({
+ templateName:"total",
+ tagName: 'input',
+ attributeBindings: ['total:value', 'placeholder', 'type'],
+ type: 'number',
+ placeholder: null,
+ total: (function() {
+    var res= parseInt(this.get('controller.newThread.quantita')) * parseInt(this.get('controller.newThread.selectContentTariffa'));
+   return isNaN(res)?"":res;
+	}).property('controller.newThread.quantita', 'controller.newThread.selectContentTariffa')
 });
-
-// App.TotaleController=Ember.ObjectController.extend({
-//   actions: {
-//     Total: function(){
-//       return this.get('newThread.quantita') * this.get('newThread.selectContentTariffa');
-//     }.property('newThread.quantita', 'newThread.selectContentTariffa')
-//   }
-// });
