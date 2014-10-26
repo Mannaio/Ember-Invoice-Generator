@@ -5,7 +5,8 @@ App.TotalView = Ember.View.extend({
  type: 'number',
  placeholder: null,
  total: (function() {
-    var res= parseInt(this.get('controller.newThread.quantita')) * parseInt(this.get('controller.newThread.selectContentTariffa'));
+    var res= this.get('controller.newThread.total');
    return isNaN(res)?"":res;
-	}).property('controller.newThread.quantita', 'controller.newThread.selectContentTariffa')
+	}).property('controller.newThread.selectContentTariffa', 'controller.newThread.quantita')
 });
+
