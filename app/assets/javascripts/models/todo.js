@@ -1,19 +1,11 @@
-App.Person = DS.Model.extend({
-  name: DS.attr('string')
+App.Fattura = DS.Model.extend({
+  name   : DS.attr('string')
 });
 
 
-App.Person.FIXTURES = [
+App.Fattura.FIXTURES = [
  {
-   id:1,
-   name: 'Tom'
- },
- {
-   id: 2,
-   name: 'Giorgio'
- },
- {
-   id: 3,
-   name: 'Laura'
+   id: 1,
+   name: 'Fattura Num 1'
  }
 ];
