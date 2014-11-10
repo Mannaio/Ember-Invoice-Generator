@@ -1,7 +1,64 @@
-<script type="text/x-handlebars" data-template-name='transactions'>
+ <script type="text/x-handlebars" id='fatturas'>
   <div class="row">
-    <div class="large-12 columns">
-      <table class="table table-bordered table-hover">
+      <div class="large-12 columns">
+        {{#link-to "fatturas.create" class="create-btn"}} Add Fattura {{/link-to}}
+      </div>
+
+      <div class="large-12 columns">
+        Fatturas: {{fatturasCount}}
+      </div>
+
+      <div class="large-12 columns">
+
+        <ul class="fatturas-listing">
+            {{#each fattura in controller}}
+            <li>
+                {{#link-to "fattura" fattura}}
+                    {{fattura.name}}
+                {{/link-to}}
+            </li>
+            {{else}}
+            <li>no fatturas… :(</li>
+            {{/each}}
+        </ul>
+      </div>
+      
+      {{outlet}}
+  </div>
+  </script>
+
+  <!-- single fattura template -->
+  <script type="text/x-handlebars" id="fattura">
+      <div class="fattura-profile">
+          {{#if deleteMode}}
+          <div class="confirm-box">
+              <h5>Really?</h5>
+              <button {{action "confirmDelete"}}> yes </button>
+              <button {{action "cancelDelete"}}> no </button>
+          </div>
+          {{/if}}
+
+          <button {{action "edit"}}>Edit</button>
+          <button {{action "delete"}}>Delete</button>
+
+          <h2>{{name}}</h2>
+          <p>Quantita : {{quantita}}</p>
+          <p>Tariffa :</p>
+          <p>Totale :</p>
+          <p>Iva % :</p>
+          <p>Iva</p>
+          <p>Totale + Iva:</p>
+
+      </div>
+      
+      {{outlet}}
+  </script>
+
+  <!-- single Fattura edit template - also used by the create route -->
+
+  <script type="text/x-handlebars" id="fattura/edit">
+      <div class="fattura-edit">
+       <table class="table table-bordered table-hover">
         <tr>
           <th>Merce</th>
           <th>Tariffa</th>
@@ -10,72 +67,16 @@
           <th>Iva</th>
           <th>Totale</th>
         </tr>
-        {{#each item in model}}
-          {{#if item.editable}}
-           <tr>
-             <td>{{view Ember.TextField valueBinding=item.quantita type="number" min ="1" autofocus="autofocus"}}</td>
-             <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" valueBinding="item.selectContentTariffa"}}</td>
-             <td>{{view Em.TextField valueBinding="item.total"}}</td>
-             <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" valueBinding="item.selectContentIva"}} </td>
-             <td>{{view Em.TextField valueBinding="item.iva"}}</td>
-             <td>{{view Em.TextField valueBinding="item.risultato"}}</td>
-             <td><button {{action update item}}>Update</button></td>
-           </tr>
-          {{else}}
-          <tr>
-            <td>{{item.quantita}}</td>
-            <td>{{item.selectContentTariffa}}</td>
-            <td>{{item.total}}</td>
-            <td>{{item.selectContentIva}}</td>
-            <td>{{item.iva}}</td>
-            <td>{{item.risultato}}</td>
-            <td>
-              <button {{action edit item}}>Edit</button>
-            </td>
-            <td>
-              <button {{action remove item}}>Delete</button>
-            </td>
-          </tr>
-          {{/if}}
-        {{/each}}
         <tr>
-          <td>{{view Em.TextField type="number" min="1" valueBinding=newThread.quantita}}</td>
-          <td>{{view Ember.Select prompt="Tariffa" content=selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" valueBinding=newThread.selectContentTariffa}}</td>
-          <td>{{view "total"}}</td>
-          <td>{{view Ember.Select prompt="Iva" content=selectContentIva optionValuePath="content.value" optionLabelPath="content.label" valueBinding=newThread.selectContentIva}}</td>
-          <td>{{view "iva"}}</td>
-          <td>{{view "risultato"}}</td>
-          <td><button {{action add item}}>Add</button></td>
+          <td>{{input value=name}}</td>
+          <td>{{input value=quantita}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><button {{action "save"}}> ok </button></td>
         </tr>
-      </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="large-12 columns">
-      <table class="table table-bordered table-hover">
-        <tr>
-          <th id="first">Totale Imponibile</th>
-          <th>{{view Em.TextField valueBinding=newThread.somma}}</th>
-          <th id="third">Totale Iva</th>
-          <th>{{view Em.TextField valueBinding=newThread.iva }}</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </table>
-    </div>
-  </div>
-</script>
-
-  <script type="text/x-handlebars" data-template-name="total">
-    {{view.total valueBinding=mewThread.total}}
+      </div>
   </script>
 
-  <script type="text/x-handlebars" data-template-name="iva">
-    {{view.iva valueBinding=newThread.iva}}
-  </script>
 
-  <script type="text/x-handlebars" data-template-name="risultato">
-    {{view.risultato valueBinding=newThread.risultato}}
-  </script>
 
