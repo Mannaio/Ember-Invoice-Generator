@@ -43,7 +43,7 @@
 
           <h2>{{name}}</h2>
           <p>Quantita : {{quantita}}</p>
-          <p>Tariffa :</p>
+          <p>Tariffa :{{controllers.tariffa.selectedTariffa.id}}</p>
           <p>Totale :</p>
           <p>Iva % :</p>
           <p>Iva</p>
@@ -60,6 +60,7 @@
       <div class="fattura-edit">
        <table class="table table-bordered table-hover">
         <tr>
+          <th>Nome Fattura</th>
           <th>Merce</th>
           <th>Tariffa</th>
           <th>Tot Imponibile</th>
@@ -70,6 +71,8 @@
         <tr>
           <td>{{input value=name}}</td>
           <td>{{input value=quantita}}</td>
+          <td>{{view Em.Select prompt="test" contentBinding="controllers.tariffa.content" optionLabelPath="content.name" optionValuePath="content.id" selectionBinding="controllers.tariffa.selectedTariffa" }}</td>
+          <td></td>
           <td></td>
           <td></td>
           <td></td>
