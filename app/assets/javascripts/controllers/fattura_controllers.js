@@ -1,6 +1,6 @@
 App.FatturaController=Ember.ObjectController.extend({
 
-    needs:['tariffa'],
+    needs:['tariffa', 'iva'],
 
     deleteMode: false,
     

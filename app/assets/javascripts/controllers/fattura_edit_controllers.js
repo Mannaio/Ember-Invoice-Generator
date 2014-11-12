@@ -1,7 +1,12 @@
 // single fattura edit form controller
 App.FatturaEditController = Ember.ObjectController.extend({
 
-	needs:['tariffa'],
+	totale: null,
+	needs:['tariffa', 'iva'],
+
+    totale:function(){
+    	return this.set("totale",this.get("quantita")*this.get("selectedTariffa"));
+ 	}.property("quantita","selectedTariffa"),
 
     actions: {
         save: function(){

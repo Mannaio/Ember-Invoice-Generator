@@ -42,10 +42,10 @@
           <button {{action "delete"}}>Delete</button>
 
           <h2>{{name}}</h2>
-          <p>Quantita : {{quantita}}</p>
-          <p>Tariffa :{{controllers.tariffa.selectedTariffa.id}}</p>
-          <p>Totale :</p>
-          <p>Iva % :</p>
+          <p>Quantita: {{quantita}}</p>
+          <p>Tariffa :{{controllers.tariffa.selectedTariffa.name}}</p>
+          <p>Totale: {{totale}}</p>
+          <p>Iva %   :{{controllers.iva.selectedIva.name}}</p>
           <p>Iva</p>
           <p>Totale + Iva:</p>
 
@@ -63,17 +63,17 @@
           <th>Nome Fattura</th>
           <th>Merce</th>
           <th>Tariffa</th>
-          <th>Tot Imponibile</th>
+          <th>Totale</th>
           <th>Iva %</th>
           <th>Iva</th>
           <th>Totale</th>
         </tr>
         <tr>
           <td>{{input value=name}}</td>
-          <td>{{input value=quantita}}</td>
+          <td>{{input type="number" value=quantita}}</td>
           <td>{{view Em.Select prompt="test" contentBinding="controllers.tariffa.content" optionLabelPath="content.name" optionValuePath="content.id" selectionBinding="controllers.tariffa.selectedTariffa" }}</td>
-          <td></td>
-          <td></td>
+          <td><input value=totale></td>
+          <td>{{view Em.Select prompt="test" contentBinding="controllers.iva.content" optionLabelPath="content.name" optionValuePath="content.value" selectionBinding="controllers.iva.selectedIva" }}</td>
           <td></td>
           <td></td>
           <td><button {{action "save"}}> ok </button></td>

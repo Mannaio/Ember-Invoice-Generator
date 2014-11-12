@@ -1,7 +1,7 @@
 // Fattura creation form controller
 App.FatturasCreateController = Em.ObjectController.extend({
     
-    needs:['tariffa'],
+    needs:['tariffa', 'iva'],
 
     actions: {
       save: function () {
