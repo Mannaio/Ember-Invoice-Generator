@@ -46,7 +46,7 @@
           <p>Tariffa:{{controllers.tariffa.selectedTariffa.name}}</p>
           <p>Totale:{{totale}}</p>
           <p>Iva %:{{controllers.iva.selectedIva.name}}</p>
-          <p>Iva</p>
+          <p>Iva: {{ivamount}}</p>
           <p>Totale + Iva:</p>
 
       </div>
@@ -72,9 +72,9 @@
             <td>{{input value=name}}</td>
             <td>{{input type="number" value=quantita}}</td>
             <td>{{view Em.Select prompt="test" contentBinding="controllers.tariffa.content" optionLabelPath="content.name" optionValuePath="content.id" selectionBinding="controllers.tariffa.selectedTariffa" }}</td>
-            <td>{{input value=totale}}</td>
+            <td>{{input type="number" value=totale}}</td>
             <td>{{view Em.Select prompt="test" contentBinding="controllers.iva.content" optionLabelPath="content.name" optionValuePath="content.value" selectionBinding="controllers.iva.selectedIva" }}</td>
-            <td></td>
+            <td>{{input value=ivamount}}</td>
             <td></td>
             <td><button {{action "save"}}> ok </button></td>
           </tr>
