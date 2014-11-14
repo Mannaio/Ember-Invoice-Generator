@@ -1,0 +1,86 @@
+ <script type="text/x-handlebars" id='fatturas'>
+  <div class="row">
+      <div class="large-12 columns">
+        {{#link-to "fatturas.create" class="create-btn"}} Add Fattura {{/link-to}}
+      </div>
+
+      <div class="large-12 columns">
+        Fatturas: {{fatturasCount}}
+      </div>
+
+      <div class="large-12 columns">
+
+        <ul class="fatturas-listing">
+            {{#each fattura in controller}}
+            <li>
+                {{#link-to "fattura" fattura}}
+                    {{fattura.name}}
+                {{/link-to}}
+            </li>
+            {{else}}
+            <li>no fatturas… :(</li>
+            {{/each}}
+        </ul>
+      </div>
+      
+      {{outlet}}
+  </div>
+  </script>
+
+  <!-- single fattura template -->
+  <script type="text/x-handlebars" id="fattura">
+      <div class="fattura-profile">
+          {{#if deleteMode}}
+          <div class="confirm-box">
+              <h5>Really?</h5>
+              <button {{action "confirmDelete"}}> yes </button>
+              <button {{action "cancelDelete"}}> no </button>
+          </div>
+          {{/if}}
+
+          <button {{action "edit"}}>Edit</button>
+          <button {{action "delete"}}>Delete</button>
+
+          <h2>{{name}}</h2>
+          <p>Quantita:{{quantita}}</p>
+          <p>Tariffa:{{controllers.tariffa.selectedTariffa.name}}</p>
+          <p>Totale:{{totale}}</p>
+          <p>Iva %:{{controllers.iva.selectedIva.name}}</p>
+          <p>Iva</p>
+          <p>Totale + Iva:</p>
+
+      </div>
+      
+      {{outlet}}
+  </script>
+
+  <!-- single Fattura edit template - also used by the create route -->
+
+  <script type="text/x-handlebars" id="fattura/edit">
+      <div class="fattura-edit">
+         <table class="table table-bordered table-hover">
+          <tr>
+            <th>Nome Fattura</th>
+            <th>Merce</th>
+            <th>Tariffa</th>
+            <th>Totale</th>
+            <th>Iva %</th>
+            <th>Iva</th>
+            <th>Totale</th>
+          </tr>
+          <tr>
+            <td>{{input value=name}}</td>
+            <td>{{input type="number" value=quantita}}</td>
+            <td>{{view Em.Select prompt="test" contentBinding="controllers.tariffa.content" optionLabelPath="content.name" optionValuePath="content.id" selectionBinding="controllers.tariffa.selectedTariffa" }}</td>
+            <td>{{input value=totale}}</td>
+            <td>{{view Em.Select prompt="test" contentBinding="controllers.iva.content" optionLabelPath="content.name" optionValuePath="content.value" selectionBinding="controllers.iva.selectedIva" }}</td>
+            <td></td>
+            <td></td>
+            <td><button {{action "save"}}> ok </button></td>
+          </tr>
+        </table>
+      </div>
+  </script>
+
+
+
