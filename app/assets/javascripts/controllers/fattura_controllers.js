@@ -1,6 +1,6 @@
-App.FatturaController=Ember.ObjectController.extend({
+App.FatturaController = Ember.ObjectController.extend({
 
-    needs:['tariffa', 'iva'],
+    needs:['tariffa', 'iva', 'fattura'],
 
     deleteMode: false,
     

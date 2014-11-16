@@ -1,6 +1,6 @@
 App.Fattura = DS.Model.extend({
   name   	      : DS.attr('string'),
-  quantita	    : DS.attr('string'),
+  quantita	      : DS.attr('string'),
   totale	      : DS.attr('string'),
   ivamount      : DS.attr('string'),
   risulatofinale: DS.attr('string')
@@ -15,6 +15,18 @@ App.Iva = DS.Model.extend({
   value: DS.attr('string')
 });
 
+
+App.Fattura.FIXTURES = [
+  {
+   id			 : 1,
+   name          : 'Fattura num 1',
+   quantita      : '100',
+   totale        : null,
+   ivamount      : null,
+   risulatofinale: null
+  }
+];
+
 App.Tariffa.FIXTURES = [
   {
     id: '100',
@@ -27,17 +39,6 @@ App.Tariffa.FIXTURES = [
   {
   	id: '300',
   	name: '300'
-  }
-];
-
-App.Fattura.FIXTURES = [
-  {
-   id: 1,
-   name          : 'Fattura num 1',
-   quantita      : '100',
-   totale        : null,
-   ivamount      : null,
-   risulatofinale: null
   }
 ];
 

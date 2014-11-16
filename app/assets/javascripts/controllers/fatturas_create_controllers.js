@@ -37,6 +37,20 @@ App.FatturasCreateController = Em.ObjectController.extend({
     }.observes('totale', 'controllers.iva.selectedIva'),
 
 
+	updateFinal: function() {
+	  var totale 		= this.get('totale'),
+		  ivamount		= this.get('ivamount');
+
+	  if(isNaN(totale))   { totale = 0; }
+	  if(isNaN(ivamount)) { ivamount = 0;}
+
+	  var risultatofinale = totale + ivamount;
+
+	  this.set('risultatofinale', risultatofinale);
+
+	}.observes('totale', 'ivamount'),
+
+
     actions: {
       save: function () {
 

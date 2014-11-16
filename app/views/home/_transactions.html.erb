@@ -11,7 +11,7 @@
       <div class="large-12 columns">
 
         <ul class="fatturas-listing">
-            {{#each fattura in controller}}
+            {{#each fattura in model}}
             <li>
                 {{#link-to "fattura" fattura}}
                     {{fattura.name}}
@@ -42,12 +42,24 @@
           <button {{action "delete"}}>Delete</button>
 
           <h2>{{name}}</h2>
-          <p>Quantita: {{quantita}}</p>
-          <p>Tariffa :{{controllers.tariffa.selectedTariffa.name}}</p>
-          <p>Totale: {{totale}}</p>
-          <p>Iva %   :{{controllers.iva.selectedIva.name}}</p>
-          <p>Iva: {{ivamount}}</p>
-          <p>Totale + Iva: {{risultatofinale}}</p>
+          <table>
+            <tr>
+              <th>Quantita</th>
+              <th>Tariffa</th>
+              <th>Totale</th>
+              <th>Iva %</th>
+              <th>Iva</th>
+              <th>Totale + Iva</th>
+            </tr>
+            <tr>
+              <td>{{quantita}}</td>
+              <td>{{controllers.tariffa.selectedTariffa.name}}</td>
+              <td>{{totale}}</td>
+              <td>{{controllers.iva.selectedIva.name}}</td>
+              <td>{{ivamount}}</td>
+              <td>{{risultatofinale}}</td>
+            </tr>
+          </table>
 
       </div>
       

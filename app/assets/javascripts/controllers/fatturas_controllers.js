@@ -20,7 +20,7 @@ App.TariffaController = Em.Controller.extend({
         this._super();
         this.set('model', this.get('store').find('tariffa'))
     }
-})
+});
 
 
 App.IvaController = Em.Controller.extend({
@@ -33,5 +33,5 @@ App.IvaController = Em.Controller.extend({
         this._super();
         this.set('model', this.get('store').find('iva'))
     }
-})
+});
 
