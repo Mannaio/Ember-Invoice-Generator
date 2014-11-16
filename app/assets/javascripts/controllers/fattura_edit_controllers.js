@@ -1,7 +1,7 @@
 // single fattura edit form controller
 App.FatturaEditController = Ember.ObjectController.extend({
 
-	needs:['tariffa', 'iva'],
+  needs:['tariffa', 'iva'],
 
   updateTotal: function() {
 

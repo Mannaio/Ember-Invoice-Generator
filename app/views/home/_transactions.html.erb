@@ -73,22 +73,30 @@
        <table class="table table-bordered table-hover">
         <tr>
           <th>Nome Fattura</th>
-          <th>Merce</th>
-          <th>Tariffa</th>
-          <th>Totale</th>
-          <th>Iva %</th>
-          <th>Iva</th>
-          <th>Totale</th>
         </tr>
         <tr>
           <td>{{input value=name}}</td>
+          <td><button> + </button></td>
+          <td><button> - </button></td>
+          <td><button {{action "save"}}> Send </button></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Merce</td>
+          <td>Tariffa</td>
+          <td>Totale</td>
+          <td>Iva %</td>
+          <td>Iva</td>
+          <td>Totale</td>
+        </tr>
+        <tr>
           <td>{{input type="number" value=quantita}}</td>
           <td>{{view Em.Select prompt="test" contentBinding="controllers.tariffa.content" optionLabelPath="content.name" optionValuePath="content.id" selectionBinding="controllers.tariffa.selectedTariffa" }}</td>
           <td>{{input value=totale}}</td>
           <td>{{view Em.Select prompt="test" contentBinding="controllers.iva.content" optionLabelPath="content.name" optionValuePath="content.value" selectionBinding="controllers.iva.selectedIva" }}</td>
           <td>{{input value=ivamount}}</td>
           <td>{{input value=risultatofinale}}</td>
-          <td><button {{action "save"}}> ok </button></td>
         </tr>
       </div>
   </script>

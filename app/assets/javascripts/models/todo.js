@@ -20,7 +20,7 @@ App.Fattura.FIXTURES = [
   {
    id			 : 1,
    name          : 'Fattura num 1',
-   quantita      : '100',
+   quantita      : null,
    totale        : null,
    ivamount      : null,
    risulatofinale: null
