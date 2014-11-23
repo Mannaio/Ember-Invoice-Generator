@@ -25,12 +25,6 @@ App.FatturasRoute = Ember.Route.extend({
     }
 });
 
-App.FatturaRoute = Em.Route.extend({
-    model: function(params){
-        return this.store.find('fattura', params.fattura_id);
-    }
-});
-
         
 // singe user edit form route
 App.FatturaEditRoute = Em.Route.extend({
