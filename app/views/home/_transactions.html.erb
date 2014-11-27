@@ -91,10 +91,10 @@
           <td>Totale</td>
         </tr>
         <tr>
-          <td>{{input type="number" valueBinding=quantita}}</td>
-          <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" valueBinding="transaction.selectContentTariffa"}}</td>
-          <td>{{input value=totale}}</td>
-          <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" valueBinding="transaction.selectContentIva"}}</td>
+          <td>{{view Em.TextField type="number" min="1" valueBinding=newTransaction.quantita}}</td>
+          <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" valueBinding=newTransaction.selectContentTariffa}}</td>
+          <td>{{view "total"}}</td>
+          <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" valueBinding=newTransaction.selectContentIva}}</td>
           <td>{{input value=ivamount}}</td>
           <td>{{input value=risultatofinale}}</td>
         </tr>
@@ -102,4 +102,7 @@
   </script>
 
 
+  <script type="text/x-handlebars" data-template-name="total">
+    {{view.total valueBinding=newTransaction.total}}
+  </script>
 

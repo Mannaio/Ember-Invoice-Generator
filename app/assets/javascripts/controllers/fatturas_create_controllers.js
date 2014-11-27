@@ -1,71 +1,62 @@
 // Fattura creation form controller
-App.FatturasCreateController = Em.ObjectController.extend({
+App.FatturasCreateController=Ember.ObjectController.extend({
 
   // selectContentTariffa: null,
   // selectContentIva: null,
 
   selectContentTariffa: [
-   {label: "180", value: "180"},
-   {label: "200", value: "200"},
-   {label: "300", value: "300"}
+     {label: "180", value: "180"},
+     {label: "200", value: "200"},
+     {label: "300", value: "300"}
   ],
 
   selectContentIva: [
-   {label: "4%",  value: "0.04"},
-   {label: "10%", value: "0.1"},
-   {label: "22%", value: "0.22"}
+     {label: "4%",  value: "0.04"},
+     {label: "10%", value: "0.1"},
+     {label: "22%", value: "0.22"}
   ],
 
-  updateTotal: function() {
-
-    // get the reference to the values of fare and quantity
-    var quantita = this.get('quantita'),
-        tariffa =  this.get('selectContentTariffa');
-
-    // message them to make sure your stuff is not gonna break
-    if (isNaN(tariffa))  { tariffa  = 0; }
-    if (isNaN(quantita)) { quantita = 0; }
-
-    // calculate
-    var totale = selectContentTariffa * quantita;
-
-    // set the total
-    this.set('totale', totale);
-
-  }.observes('quantita', 'selectContentTariffa'),
+  newTransaction:function(){
+     return this.initializeNewTransaction();
+  }.property(),
 
 
-  updateIva: function() {
-
-    var totale = this.get('totale'),
-        iva    = this.get('selectContentIva');
-
-    if(isNaN(totale)) { totale = 0; }
-    if(isNaN(iva))    { iva = 0; }
-
-    var ivamount = totale * selectContentIva;
-
-    this.set('ivamount', ivamount);
-
-  }.observes('totale', 'selectContentIva'),
-
-
-  updateFinal: function() {
-    var totale 		= this.get('totale'),
-  	  ivamount		= this.get('ivamount');
-
-    if(isNaN(totale))   { totale = 0; }
-    if(isNaN(ivamount)) { ivamount = 0;}
-
-    var risultatofinale = totale + ivamount;
-
-    this.set('risultatofinale', risultatofinale);
-
-  }.observes('totale', 'ivamount'),
-
+  initializeNewTransaction:function(){
+    
+   var aNewTransaction= Em.Object.create({
+      selectContentTariffa:null,
+      quantita:null,
+      total:null,
+      selectContentIva:null,
+      ivamount:null,
+      risultatofinale:null,
+      somma:null,
+      weight:null
+   });
+    
+   aNewTransaction.reopen({
+    calcTotal:function(){
+          this.set("total",this.get("quantita")*this.get("selectContentTariffa"));
+       }.observes("quantita","selectContentTariffa"),
+    percTotal:function(){
+        this.set("ivamount",this.get("total")*this.get("selectContentIva"));
+       }.observes("total","selectContentIva"),
+    totatResult:function(){
+        this.set("risultatofinale",this.get("total") + this.get("ivamount"));
+       }.observes("total","ivamount"),
+ //    sumTotal:function(){
+ //       var sum = function(s1,s2){ return s1 + s2;}
+ //       return
+    // this.get("controller").getEach("total").reduce(sum);
+ //     }.property("controller.@each.total"),
+    });      
+    
+    return aNewTransaction;
+    
+  },
 
   actions: {
-    save: function () {
+    save:function() {
 
         // save and commit
         var newFattura = this.get('model');
