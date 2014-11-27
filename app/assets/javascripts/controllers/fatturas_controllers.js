@@ -1,5 +1,21 @@
 App.FatturasController=Ember.ArrayController.extend({
 
+   // selectContentTariffa: null,
+   // selectContentIva: null,
+
+   selectContentTariffa: [
+     {label: "180", value: "180"},
+     {label: "200", value: "200"},
+     {label: "300", value: "300"}
+   ],
+
+   selectContentIva: [
+     {label: "4%",  value: "0.04"},
+     {label: "10%", value: "0.1"},
+     {label: "22%", value: "0.22"}
+   ],
+
+
 	totale: null,
     sortProperties: ['name'],
     sortAscending: true, // false = descending
@@ -8,30 +24,5 @@ App.FatturasController=Ember.ArrayController.extend({
         return this.get('model.length');
     }.property('@each'),
 
-});
-
-App.TariffaController = Em.Controller.extend({
-
-	selectedTariffa: null,
-    needs:['tariffa'],
-
-    selectedTariffa: Ember.computed.alias('content.firstObject'),
-    init: function() {
-        this._super();
-        this.set('model', this.get('store').find('tariffa'))
-    }
-});
-
-
-App.IvaController = Em.Controller.extend({
-
-	selectedIva: null,
-    needs:['iva'],
-
-    selectedIva: Ember.computed.alias('content.firstObject'),
-    init: function() {
-        this._super();
-        this.set('model', this.get('store').find('iva'))
-    }
 });
 

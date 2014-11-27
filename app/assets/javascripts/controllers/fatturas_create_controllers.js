@@ -1,65 +1,78 @@
 // Fattura creation form controller
 App.FatturasCreateController = Em.ObjectController.extend({
-    
-    needs:['tariffa', 'iva'],
 
-    updateTotal: function() {
+  // selectContentTariffa: null,
+  // selectContentIva: null,
 
-      // get the reference to the values of fare and quantity
-      var quantita = this.get('quantita'),
-          tariffa =  this.get('controllers.tariffa.selectedTariffa.id');
+  selectContentTariffa: [
+   {label: "180", value: "180"},
+   {label: "200", value: "200"},
+   {label: "300", value: "300"}
+  ],
 
-      // message them to make sure your stuff is not gonna break
-      if (isNaN(tariffa))  { tariffa  = 0; }
-      if (isNaN(quantita)) { quantita = 0; }
+  selectContentIva: [
+   {label: "4%",  value: "0.04"},
+   {label: "10%", value: "0.1"},
+   {label: "22%", value: "0.22"}
+  ],
 
-      // calculate
-      var totale = tariffa * quantita;
+  updateTotal: function() {
 
-      // set the total
-      this.set('totale', totale);
+    // get the reference to the values of fare and quantity
+    var quantita = this.get('quantita'),
+        tariffa =  this.get('selectContentTariffa');
 
-    }.observes('quantita', 'controllers.tariffa.selectedTariffa'),
+    // message them to make sure your stuff is not gonna break
+    if (isNaN(tariffa))  { tariffa  = 0; }
+    if (isNaN(quantita)) { quantita = 0; }
 
+    // calculate
+    var totale = selectContentTariffa * quantita;
 
-    updateIva: function() {
+    // set the total
+    this.set('totale', totale);
 
-      var totale = this.get('totale'),
-          iva    = this.get('controllers.iva.selectedIva.value');
-
-      if(isNaN(totale)) { totale = 0; }
-      if(isNaN(iva))    { iva = 0; }
-
-      var ivamount = totale * iva;
-
-      this.set('ivamount', ivamount);
-
-    }.observes('totale', 'controllers.iva.selectedIva'),
+  }.observes('quantita', 'selectContentTariffa'),
 
 
-	updateFinal: function() {
-	  var totale 		= this.get('totale'),
-		  ivamount		= this.get('ivamount');
+  updateIva: function() {
 
-	  if(isNaN(totale))   { totale = 0; }
-	  if(isNaN(ivamount)) { ivamount = 0;}
+    var totale = this.get('totale'),
+        iva    = this.get('selectContentIva');
 
-	  var risultatofinale = totale + ivamount;
+    if(isNaN(totale)) { totale = 0; }
+    if(isNaN(iva))    { iva = 0; }
 
-	  this.set('risultatofinale', risultatofinale);
+    var ivamount = totale * selectContentIva;
 
-	}.observes('totale', 'ivamount'),
+    this.set('ivamount', ivamount);
+
+  }.observes('totale', 'selectContentIva'),
 
 
-    actions: {
-      save: function () {
+  updateFinal: function() {
+    var totale 		= this.get('totale'),
+  	  ivamount		= this.get('ivamount');
 
-          // save and commit
-          var newFattura = this.get('model');
-          newFattura.save();
+    if(isNaN(totale))   { totale = 0; }
+    if(isNaN(ivamount)) { ivamount = 0;}
 
-          // redirects to the fattura itself
-          this.transitionToRoute('fattura', newFattura);
-      }
+    var risultatofinale = totale + ivamount;
+
+    this.set('risultatofinale', risultatofinale);
+
+  }.observes('totale', 'ivamount'),
+
+
+  actions: {
+    save: function () {
+
+        // save and commit
+        var newFattura = this.get('model');
+        newFattura.save();
+
+        // redirects to the fattura itself
+        this.transitionToRoute('fattura', newFattura);
     }
+  }
 });

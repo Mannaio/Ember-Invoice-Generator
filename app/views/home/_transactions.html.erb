@@ -41,7 +41,7 @@
           <button {{action "edit"}}>Edit</button>
           <button {{action "delete"}}>Delete</button>
 
-          <h2>{{name}}</h2>
+          <h2>{{fattura.name}}</h2>
           <table>
             <tr>
               <th>Quantita</th>
@@ -52,12 +52,12 @@
               <th>Totale + Iva</th>
             </tr>
             <tr>
-              <td>{{quantita}}</td>
-              <td>{{controllers.tariffa.selectedTariffa.name}}</td>
+              <td>{{transaction.quantita}}</td>
+              <td>{{transaction.selectContentTariffa}}</td>
               <td>{{totale}}</td>
-              <td>{{controllers.iva.selectedIva.name}}</td>
-              <td>{{ivamount}}</td>
-              <td>{{risultatofinale}}</td>
+              <td>{{item.selectContentIva}}</td>
+              <td>{{item.ivamount}}</td>
+              <td>{{item.risultatofinale}}</td>
             </tr>
           </table>
 
@@ -75,7 +75,7 @@
           <th>Nome Fattura</th>
         </tr>
         <tr>
-          <td>{{input value=name}}</td>
+          <td>{{input valueBinding=name}}</td>
           <td><button> + </button></td>
           <td><button> - </button></td>
           <td><button {{action "save"}}> Send </button></td>
@@ -91,10 +91,10 @@
           <td>Totale</td>
         </tr>
         <tr>
-          <td>{{input type="number" value=quantita}}</td>
-          <td>{{view Em.Select prompt="test" contentBinding="controllers.tariffa.content" optionLabelPath="content.name" optionValuePath="content.id" selectionBinding="controllers.tariffa.selectedTariffa" }}</td>
+          <td>{{input type="number" valueBinding=quantita}}</td>
+          <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" valueBinding="transaction.selectContentTariffa"}}</td>
           <td>{{input value=totale}}</td>
-          <td>{{view Em.Select prompt="test" contentBinding="controllers.iva.content" optionLabelPath="content.name" optionValuePath="content.value" selectionBinding="controllers.iva.selectedIva" }}</td>
+          <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" valueBinding="transaction.selectContentIva"}}</td>
           <td>{{input value=ivamount}}</td>
           <td>{{input value=risultatofinale}}</td>
         </tr>
