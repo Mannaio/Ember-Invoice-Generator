@@ -95,8 +95,8 @@
           <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" valueBinding=newTransaction.selectContentTariffa}}</td>
           <td>{{view "total"}}</td>
           <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" valueBinding=newTransaction.selectContentIva}}</td>
-          <td>{{input value=ivamount}}</td>
-          <td>{{input value=risultatofinale}}</td>
+          <td>{{view "iva"}}</td>
+          <td>{{view "risultato"}}</td>
         </tr>
       </div>
   </script>
@@ -106,3 +106,10 @@
     {{view.total valueBinding=newTransaction.total}}
   </script>
 
+  <script type="text/x-handlebars" data-template-name="iva">
+    {{view.iva valueBinding=newTransaction.iva}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="risultato">
+    {{view.risultato valueBinding=newTransaction.risultatofinale}}
+  </script>
