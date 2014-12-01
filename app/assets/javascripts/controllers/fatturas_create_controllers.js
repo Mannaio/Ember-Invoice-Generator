@@ -23,15 +23,15 @@ App.FatturasCreateController=Ember.ObjectController.extend({
 
   initializeNewTransaction:function(){
     
-   var aNewTransaction= Em.Object.create({
-      selectContentTariffa:null,
-      quantita:null,
-      total:null,
-      selectContentIva:null,
-      ivamount:null,
-      risultatofinale:null,
-      somma:null,
-      weight:null
+  var aNewTransaction= Em.Object.create({
+    selectContentTariffa:null,
+    quantita:null,
+    total:null,
+    selectContentIva:null,
+    ivamount:null,
+    risultatofinale:null,
+    somma:null,
+    weight:null
    });
     
    aNewTransaction.reopen({
@@ -44,11 +44,11 @@ App.FatturasCreateController=Ember.ObjectController.extend({
     totatResult:function(){
         this.set("risultatofinale",this.get("total")+this.get("ivamount"));
        }.observes("total","ivamount"),
- //    sumTotal:function(){
- //       var sum = function(s1,s2){ return s1 + s2;}
- //       return
+  //    sumTotal:function(){
+  //       var sum = function(s1,s2){ return s1 + s2;}
+  //       return
     // this.get("controller").getEach("total").reduce(sum);
- //     }.property("controller.@each.total"),
+  //     }.property("controller.@each.total"),
     });      
     
     return aNewTransaction;
@@ -56,14 +56,23 @@ App.FatturasCreateController=Ember.ObjectController.extend({
   },
 
   actions: {
+    add: function() {
+      this.addObject(this.get('newTransaction'));
+      this.set('newTransaction', this.initializeNewTransaction());
+    },
+
     save:function() {
-
-        // save and commit
-        var newFattura = this.get('model');
-        newFattura.save();
-
+      // save and commit
+      var newFattura = this.get('model');
+      newFattura.save();
         // redirects to the fattura itself
-        this.transitionToRoute('fattura', newFattura);
-    }
+      this.transitionToRoute('fattura', newFattura);
+    },
   }
 });
+
+
+
+
+
+
