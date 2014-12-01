@@ -13,10 +13,10 @@ App.TotalView = Ember.View.extend({
 App.IvaView = Ember.View.extend({
  templateName:"iva",
  tagName: 'input',
- attributeBindings: ['iva:value', 'placeholder', 'type'],
+ attributeBindings: ['ivamount:value', 'placeholder', 'type'],
  type: 'number',
  placeholder: null,
- iva: (function() {
+ ivamount: (function() {
     var res= this.get('controller.newTransaction.ivamount');
     return isNaN(res)?"":res;
 	}).property('controller.newTransaction.selectContentIva', 'controller.newTransaction.total')
@@ -28,7 +28,7 @@ App.RisultatoView = Ember.View.extend({
  attributeBindings: ['risultatofinale:value', 'placeholder', 'type'],
  type: 'number',
  placeholder: null,
- risultato: (function() {
+ risultatofinale: (function() {
  	var res= this.get('controller.newTransaction.risultatofinale');
  	return isNaN(res)?"":res;
  	}).property('controller.newTransaction.total', 'controller.newTransaction.ivamount')

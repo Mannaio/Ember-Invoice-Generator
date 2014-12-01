@@ -42,7 +42,7 @@ App.FatturasCreateController=Ember.ObjectController.extend({
         this.set("ivamount",this.get("total")*this.get("selectContentIva"));
        }.observes("total","selectContentIva"),
     totatResult:function(){
-        this.set("risultatofinale",this.get("total") + this.get("ivamount"));
+        this.set("risultatofinale",this.get("total")+this.get("ivamount"));
        }.observes("total","ivamount"),
  //    sumTotal:function(){
  //       var sum = function(s1,s2){ return s1 + s2;}
