@@ -16,59 +16,69 @@ App.FatturasCreateController=Ember.ObjectController.extend({
      {label: "22%", value: "0.22"}
   ],
 
-  newTransaction:function(){
+  transaction:function(){
      return this.initializeNewTransaction();
   }.property(),
 
 
   initializeNewTransaction:function(){
     
-  var aNewTransaction= Em.Object.create({
-    selectContentTariffa:null,
-    quantita:null,
-    total:null,
-    selectContentIva:null,
-    ivamount:null,
-    risultatofinale:null,
-    somma:null,
-    weight:null
-   });
-    
-   aNewTransaction.reopen({
-    calcTotal:function(){
-          this.set("total",this.get("quantita")*this.get("selectContentTariffa"));
-       }.observes("quantita","selectContentTariffa"),
-    percTotal:function(){
-        this.set("ivamount",this.get("total")*this.get("selectContentIva"));
-       }.observes("total","selectContentIva"),
-    totatResult:function(){
-        this.set("risultatofinale",this.get("total")+this.get("ivamount"));
-       }.observes("total","ivamount"),
-  //    sumTotal:function(){
-  //       var sum = function(s1,s2){ return s1 + s2;}
-  //       return
-    // this.get("controller").getEach("total").reduce(sum);
-  //     }.property("controller.@each.total"),
-    });      
-    
-    return aNewTransaction;
-    
+    var aNewTransaction= Em.Object.create({
+      selectContentTariffa:null,
+      quantita:null,
+      total:null,
+      selectContentIva:null,
+      ivamount:null,
+      risultatofinale:null,
+      somma:null,
+      weight:null
+     });
+      
+     aNewTransaction.reopen({
+      calcTotal:function(){
+            this.set("total",this.get("quantita")*this.get("selectContentTariffa"));
+         }.observes("quantita","selectContentTariffa"),
+      percTotal:function(){
+          this.set("ivamount",this.get("total")*this.get("selectContentIva"));
+         }.observes("total","selectContentIva"),
+      totatResult:function(){
+          this.set("risultatofinale",this.get("total")+this.get("ivamount"));
+         }.observes("total","ivamount"),
+    //    sumTotal:function(){
+    //       var sum = function(s1,s2){ return s1 + s2;}
+    //       return
+      // this.get("controller").getEach("total").reduce(sum);
+    //     }.property("controller.@each.total"),
+      });      
+      
+      return aNewTransaction;
+      
   },
 
   actions: {
-    add: function() {
-      this.addObject(this.get('newTransaction'));
-      this.set('newTransaction', this.initializeNewTransaction());
+
+    newTransaction: function(model) {
+      var currentTransaction = model.get('transaction'),
+        _this = this;
+
+      currentTransactions.then(function (data) {
+        var newTransaction = _this.store.createRecord('transaction');
+
+        data.addObject(newTransaction);
+
+      });
+
     },
 
-    save:function() {
+    save: function () {
       // save and commit
       var newFattura = this.get('model');
       newFattura.save();
-        // redirects to the fattura itself
+      // redirects to the fattura itself
       this.transitionToRoute('fattura', newFattura);
     },
   }
+
 });
 
 

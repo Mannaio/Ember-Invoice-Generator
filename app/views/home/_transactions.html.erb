@@ -76,8 +76,6 @@
         </tr>
         <tr>
           <td>{{input valueBinding=name}}</td>
-          <td><button {{action add item}}> + </button></td>
-          <td><button> - </button></td>
           <td><button {{action "save"}}> Send </button></td>
           <td></td>
           <td></td>
@@ -90,20 +88,16 @@
           <td>Iva</td>
           <td>Totale</td>
           <td></td>
-          <td></td>
         </tr>
         <tr>
-          <td>{{view Em.TextField type="number" min="1" valueBinding=newTransaction.quantita}}</td>
-          <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" valueBinding=newTransaction.selectContentTariffa}}</td>
+          <td>{{view Em.TextField type="number" min="1" valueBinding=transaction.quantita}}</td>
+          <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" valueBinding=transaction.selectContentTariffa}}</td>
           <td>{{view "total"}}</td>
-          <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" valueBinding=newTransaction.selectContentIva}}</td>
+          <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" valueBinding=transaction.selectContentIva}}</td>
           <td>{{view "iva"}}</td>
           <td>{{view "risultato"}}</td>
           <td>
-            <button {{action edit item}}>Edit</button>
-          </td>
-          <td>
-            <button {{action remove item}}>Delete</button>
+            <button {{action "newTransaction" item}}>Add</button>
           </td>
         </tr>
       </div>
@@ -111,13 +105,13 @@
 
 
   <script type="text/x-handlebars" data-template-name="total">
-    {{view.total valueBinding=newTransaction.total}}
+    {{view.total valueBinding=transaction.total}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="iva">
-    {{view.iva valueBinding=newTransaction.ivamount}}
+    {{view.iva valueBinding=transaction.ivamount}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="risultato">
-    {{view.risultato valueBinding=newTransaction.risultatofinale}}
+    {{view.risultato valueBinding=transaction.risultatofinale}}
   </script>

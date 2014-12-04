@@ -16,7 +16,7 @@ App.FatturaEditController = Ember.ObjectController.extend({
    {label: "22%", value: "0.22"}
   ],
 
-  newTransaction:function(){
+  transaction:function(){
      return this.initializeNewTransaction();
   }.property(),
 
@@ -57,10 +57,18 @@ App.FatturaEditController = Ember.ObjectController.extend({
 
   actions: {
 
-    add: function() {
-      this.addObject(this.get('newTransaction'));
-      this.set('newTransaction', this.initializeNewTransaction());
-    }, 
+    newTransaction: function(model) {
+      var currentTransaction = model.get('transaction'),
+        _this = this;
+
+      currentTransaction.then(function (data) {
+        var newTransaction = _this.store.createRecord('transaction');
+
+        data.addObject(newTransaction);
+
+      });
+
+    },
 
     save: function () {
       // save and commit
@@ -70,4 +78,5 @@ App.FatturaEditController = Ember.ObjectController.extend({
       this.transitionToRoute('fattura', newFattura);
     },
   }
+
 });
