@@ -10,17 +10,17 @@ App.Transaction = DS.Model.extend({
   ivamount      : DS.attr('string'),
   risulatofinale: DS.attr('string'),
   fattura       : DS.belongsTo('fattura'),
-  tariffas      : DS.hasMany('tariffa', {async:true}),
-  ivas          : DS.hasMany('iva', {async:true})
+  selectContentTariffas      : DS.hasMany('selectContentTariffa', {async:true}),
+  selectContentIvas          : DS.hasMany('selectContentIva', {async:true})
 });
 
-App.Tariffa = DS.Model.extend({ 
+App.SelectContentTariffa = DS.Model.extend({ 
   label: DS.attr('string'),
   value: DS.attr('string'),
   transaction: DS.belongsTo('transaction')
 });
 
-App.Iva = DS.Model.extend({ 
+App.SelectContentIva = DS.Model.extend({ 
   label: DS.attr('string'),
   value: DS.attr('string'),
   transaction: DS.belongsTo('transaction')

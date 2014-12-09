@@ -17,12 +17,12 @@ App.FatturasController=Ember.ArrayController.extend({
 
 
 	totale: null,
-    sortProperties: ['name'],
-    sortAscending: true, // false = descending
+  sortProperties: ['name'],
+  sortAscending: true, // false = descending
     
-    fatturasCount: function(){
-        return this.get('model.length');
-    }.property('@each'),
+  fatturasCount: function(){
+      return this.get('model.length');
+  }.property('@each'),
 
 });
 

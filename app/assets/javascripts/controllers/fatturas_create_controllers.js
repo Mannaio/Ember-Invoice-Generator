@@ -16,7 +16,7 @@ App.FatturasCreateController=Ember.ObjectController.extend({
      {label: "22%", value: "0.22"}
   ],
 
-  transaction:function(){
+  newTransaction:function(){
      return this.initializeNewTransaction();
   }.property(),
 
@@ -57,17 +57,9 @@ App.FatturasCreateController=Ember.ObjectController.extend({
 
   actions: {
 
-    newTransaction: function(model) {
-      var currentTransaction = model.get('transaction'),
-        _this = this;
-
-      currentTransactions.then(function (data) {
-        var newTransaction = _this.store.createRecord('transaction');
-
-        data.addObject(newTransaction);
-
-      });
-
+    add:function(){
+      this.addObject(this.get('newTransaction'));
+        this.set("newTransaction",this.initializeNewTransaction());
     },
 
     save: function () {
