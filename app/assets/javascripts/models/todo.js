@@ -6,26 +6,13 @@ App.Fattura = DS.Model.extend({
 App.Transaction = DS.Model.extend({
   id            : '1',
   quantita      : DS.attr('string'),
-  totale        : DS.attr('string'),
+  total         : DS.attr('string'),
   ivamount      : DS.attr('string'),
   risulatofinale: DS.attr('string'),
   fattura       : DS.belongsTo('fattura'),
-  selectContentTariffas      : DS.hasMany('selectContentTariffa', {async:true}),
-  selectContentIvas          : DS.hasMany('selectContentIva', {async:true})
+  selectContentTariffa : DS.attr('string'),
+  selectContentIva     : DS.attr('string')
 });
-
-App.SelectContentTariffa = DS.Model.extend({ 
-  label: DS.attr('string'),
-  value: DS.attr('string'),
-  transaction: DS.belongsTo('transaction')
-});
-
-App.SelectContentIva = DS.Model.extend({ 
-  label: DS.attr('string'),
-  value: DS.attr('string'),
-  transaction: DS.belongsTo('transaction')
-});
-
 
 App.Fattura.reopenClass({
   FIXTURES: [
@@ -42,7 +29,7 @@ App.Transaction.reopenClass({
     {
       id            : '1',
       quantita      : null,
-      totale        : null,
+      total        : null,
       ivamount      : null,
       risulatofinale: null
     }
