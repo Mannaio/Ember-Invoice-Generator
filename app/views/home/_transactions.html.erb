@@ -80,24 +80,30 @@
           <td></td>
           <td></td>
         </tr>
-        <tr>
-          <td>Merce</td>
-          <td>Tariffa</td>
-          <td>Totale</td>
-          <td>Iva %</td>
-          <td>Iva</td>
-          <td>Totale</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>{{view Em.TextField type="number" min="1" valueBinding=quantita}}</td>
-          <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" valueBinding=selectContentTariffa.value}}</td>
-          <td>{{view "total"}}</td>
-          <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" valueBinding=selectContentIva.value}}</td>
-          <td>{{view "iva"}}</td>
-          <td>{{view "risultato"}}</td>
-          <td></td>
-        </tr>
+        {{#each model.transactions}}
+          <tr>
+            <td>Merce</td>
+            <td>Tariffa</td>
+            <td>Totale</td>
+            <td>Iva %</td>
+            <td>Iva</td>
+            <td>Totale</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>{{input type="checkbox" value="isChecked" checked=isChecked}}</td>
+            <td>{{view Em.TextField type="number" min="1" valueBinding=quantita}}</td>
+            <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" valueBinding=selectContentTariffa.value}}</td>
+            <td>{{view "total"}}</td>
+            <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" valueBinding=selectContentIva.value}}</td>
+            <td>{{view "iva"}}</td>
+            <td>{{view "risultato"}}</td>
+            <td></td>
+          </tr>
+         {{/each}}
+         <tr>
+          <td><button {{action "add"}}>Add New Transaction</button></td>
+         </tr>
       </div>
   </script>
 

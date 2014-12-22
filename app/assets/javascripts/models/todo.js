@@ -10,8 +10,9 @@ App.Transaction = DS.Model.extend({
   ivamount      : DS.attr('string'),
   risulatofinale: DS.attr('string'),
   fattura       : DS.belongsTo('fattura'),
-  selectContentTariffa : DS.attr('string'),
-  selectContentIva     : DS.attr('string')
+  tariffa       : DS.attr('string'),
+  iva           : DS.attr('string'),
+  isChecked     : DS.attr('boolean')
 });
 
 App.Fattura.reopenClass({
@@ -29,7 +30,7 @@ App.Transaction.reopenClass({
     {
       id            : '1',
       quantita      : null,
-      total        : null,
+      total         : null,
       ivamount      : null,
       risulatofinale: null
     }

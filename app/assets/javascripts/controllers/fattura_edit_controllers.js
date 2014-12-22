@@ -36,6 +36,16 @@ App.FatturaEditController = Ember.ObjectController.extend({
 
   actions: {
 
+    add: function() {
+ 
+      var transactionRecord = this.store.createRecord('transaction', {
+        name: 'new transaction',
+        isChecked: false
+      });
+      
+      return this.get("model.transactions").addObject(transactionRecord);
+    },
+
     save: function () {
       // save and commit
       var newFattura = this.get('model');
