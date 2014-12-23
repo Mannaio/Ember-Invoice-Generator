@@ -4,7 +4,6 @@ App.Fattura = DS.Model.extend({
 });
 
 App.Transaction = DS.Model.extend({
-  id            : '1',
   quantita      : DS.attr('string'),
   total         : DS.attr('string'),
   ivamount      : DS.attr('string'),

@@ -51,14 +51,16 @@
               <th>Iva</th>
               <th>Totale + Iva</th>
             </tr>
-            <tr>
-              <td>{{quantita}}</td>
-              <td>{{selectContentTariffa}}</td>
-              <td>{{totale}}</td>
-              <td>{{selectContentIva}}</td>
-              <td>{{ivamount}}</td>
-              <td>{{risultatofinale}}</td>
-            </tr>
+            {{#each transactions}}
+              <tr>
+                <td>{{controller.quantita}}</td>
+                <td>{{controller.tariffa}}</td>
+                <td>{{view "total"}}</td>
+                <td>{{controller.iva}}</td>
+                <td>{{view "ivamount"}}</td>
+                <td>{{risultatofinale}}</td>
+              </tr>
+            {{/each}}
           </table>
 
       </div>
@@ -82,6 +84,7 @@
         </tr>
         {{#each model.transactions}}
           <tr>
+            <td>Seleeziona</td>
             <td>Merce</td>
             <td>Tariffa</td>
             <td>Totale</td>
@@ -92,11 +95,11 @@
           </tr>
           <tr>
             <td>{{input type="checkbox" value="isChecked" checked=isChecked}}</td>
-            <td>{{view Em.TextField type="number" min="1" valueBinding=quantita}}</td>
-            <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" valueBinding=selectContentTariffa.value}}</td>
+            <td>{{view Em.TextField type="number" min="1" value=controller.quantita}}</td>
+            <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" value=controller.tariffa}}</td>
             <td>{{view "total"}}</td>
-            <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" valueBinding=selectContentIva.value}}</td>
-            <td>{{view "iva"}}</td>
+            <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" value=controller.iva}}</td>
+            <td>{{view "ivamount"}}</td>
             <td>{{view "risultato"}}</td>
             <td></td>
           </tr>
@@ -109,11 +112,11 @@
 
 
   <script type="text/x-handlebars" data-template-name="total">
-    {{view.total value=total}}
+    {{view.total}}
   </script>
 
-  <script type="text/x-handlebars" data-template-name="iva">
-    {{view.iva valueBinding=ivamount}}
+  <script type="text/x-handlebars" data-template-name="ivamount">
+    {{view.ivamount}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="risultato">

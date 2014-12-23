@@ -1,25 +1,24 @@
 App.TotalView = Ember.View.extend({
  templateName:"total",
- tagName: 'input',
- attributeBindings: ['total:value', 'placeholder', 'type'],
- type: 'number',
+ tagName: 'p',
+ attributeBindings: ['total:value'],
  placeholder: null,
  total: (function() {
-    var res= this.get('controller.newTransaction.total');
+   var res= parseInt(this.get('controller.quantita')) * parseInt(this.get('controller.tariffa'));
    return isNaN(res)?"":res;
-	}).property('controller.newTransaction.selectContentTariffa', 'controller.newTransaction.quantita')
+   }).property('controller.tariffa', 'controller.quantita')
 });
 
-App.IvaView = Ember.View.extend({
- templateName:"iva",
- tagName: 'input',
- attributeBindings: ['ivamount:value', 'placeholder', 'type'],
+App.IvamountView = Ember.View.extend({
+ templateName:"ivamount",
+ tagName: 'p',
+ attributeBindings: ['iva:value', 'placeholder', 'type'],
  type: 'number',
  placeholder: null,
- ivamount: (function() {
-    var res= this.get('controller.newTransaction.ivamount');
-    return isNaN(res)?"":res;
-	}).property('controller.newTransaction.selectContentIva', 'controller.newTransaction.total')
+ iva: (function() {
+  var res= parseInt(this.get('controller.iva')) * parseInt(this.get('total'));
+  return isNaN(res)?"":res;
+	}).property('controller.iva', 'total')
 });
 
 App.RisultatoView = Ember.View.extend({
