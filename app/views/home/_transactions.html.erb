@@ -53,12 +53,12 @@
             </tr>
             {{#each transactions}}
               <tr>
-                <td>{{controller.quantita}}</td>
-                <td>{{controller.tariffa}}</td>
-                <td>{{view "total"}}</td>
-                <td>{{controller.iva}}</td>
-                <td>{{view "ivamount"}}</td>
-                <td>{{risultatofinale}}</td>
+                <td>{{quantita}}</td>
+                <td>{{tariffa}}</td>
+                <td>{{total}}</td>
+                <td>{{iva}}</td>
+                <td></td>
+                <td></td>
               </tr>
             {{/each}}
           </table>
@@ -95,12 +95,12 @@
           </tr>
           <tr>
             <td>{{input type="checkbox" value="isChecked" checked=isChecked}}</td>
-            <td>{{view Em.TextField type="number" min="1" value=controller.quantita}}</td>
-            <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" value=controller.tariffa}}</td>
-            <td>{{view "total"}}</td>
-            <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" value=controller.iva}}</td>
-            <td>{{view "ivamount"}}</td>
-            <td>{{view "risultato"}}</td>
+            <td>{{view Em.TextField type="number" min="1" value=quantita}}</td>
+            <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" value=tariffa}}</td>
+            <td>{{total}}</td>
+            <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" value=iva}}</td>
+            <td>{{ivamount}}</td>
+            <td>{{risultato}}</td>
             <td></td>
           </tr>
          {{/each}}
