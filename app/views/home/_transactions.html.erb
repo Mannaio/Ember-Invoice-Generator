@@ -55,10 +55,10 @@
               <tr>
                 <td>{{quantita}}</td>
                 <td>{{tariffa}}</td>
-                <td>{{total}}</td>
+                <td>{{lordo}}</td>
                 <td>{{iva}}</td>
-                <td></td>
-                <td></td>
+                <td>{{ivamount}}</td>
+                <td>{{netto}}</td>
               </tr>
             {{/each}}
           </table>
@@ -97,11 +97,10 @@
             <td>{{input type="checkbox" value="isChecked" checked=isChecked}}</td>
             <td>{{view Em.TextField type="number" min="1" value=quantita}}</td>
             <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" value=tariffa}}</td>
-            <td>{{total}}</td>
+            <td>{{lordo}}</td>
             <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" value=iva}}</td>
             <td>{{ivamount}}</td>
-            <td>{{risultato}}</td>
-            <td></td>
+            <td>{{netto}}</td>
           </tr>
          {{/each}}
          <tr>
@@ -111,14 +110,3 @@
   </script>
 
 
-  <script type="text/x-handlebars" data-template-name="total">
-    {{view.total}}
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="ivamount">
-    {{view.ivamount}}
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="risultato">
-    {{view.risultato valueBinding=risultatofinale}}
-  </script>
