@@ -61,6 +61,14 @@
                 <td>{{netto}}</td>
               </tr>
             {{/each}}
+              <tr>
+                <td></td>
+                <td>Total Lordo</td>
+                <td>{{transactionsAmounts}}</td>
+                <td>Total Iva</td>
+                <td>{{transactionsIvas}}</td>
+                <td></td>
+              </tr>
           </table>
 
       </div>
@@ -105,6 +113,11 @@
          {{/each}}
          <tr>
           <td><button {{action "add"}}>Add New Transaction</button></td>
+          <td></td>
+          <td>Total Lordo</td>
+          <td>{{transactionsAmounts}}</td>
+          <td>Total Iva</td>
+          <td>{{transactionsIvas}}</td>
          </tr>
       </div>
   </script>

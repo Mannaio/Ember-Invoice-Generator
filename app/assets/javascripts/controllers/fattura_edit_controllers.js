@@ -16,24 +16,6 @@ App.FatturaEditController = Ember.ObjectController.extend({
    {label: "22%", value: "0.22"}
   ],
 
-  updateTotal: function() {
-
-    // get the reference to the values of fare and quantity
-    var quantita = this.get('quantita'),
-        tariffa =  this.get('selectContentTariffa.value');
-
-    // message them to make sure your stuff is not gonna break
-    if (isNaN(tariffa))  { tariffa  = 0; }
-    if (isNaN(quantita)) { quantita = 0; }
-
-    // calculate
-    var total = tariffa * quantita;
-
-    // set the total
-    this.set('total', total);
-
-  }.observes('quantita', 'selectContentTariffa.value'),
-
   actions: {
 
     add: function() {
@@ -54,5 +36,6 @@ App.FatturaEditController = Ember.ObjectController.extend({
       this.transitionToRoute('fattura', newFattura);
     },
   }
+
 
 });

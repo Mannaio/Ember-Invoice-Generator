@@ -1,6 +1,30 @@
 App.Fattura = DS.Model.extend({
-  name          : DS.attr('string'),
-  transactions  : DS.hasMany('transaction', {async:true})
+  name                : DS.attr('string'),
+  transactions        : DS.hasMany('transaction', {async:true}),
+  transactionsAmounts : 0,
+  transactionsIvas    : 0,
+  setTransactionAmount : function(){
+    if(this.get("transactions.length")>0){
+      this.get("transactions").then(function(transactions){
+        var sum=0;
+        transactions.forEach(function(transaction){
+           sum+=transaction.get("lordo");
+        });
+        this.set("transactionsAmounts",sum);
+      }.bind(this));
+    }
+  }.observes('transactions.length', 'transactions.@each.lordo'),
+  setTransactionIva: function(){
+    if(this.get("transactions.length")>0){
+      this.get("transactions").then(function(transactions){
+        var sum=0;
+        transactions.forEach(function(transaction){
+           sum+=transaction.get("ivamount");
+        });
+        this.set("transactionsIvas",sum);
+      }.bind(this));
+    }
+  }.observes('transactions.length', 'transactions.@each.ivamount'),
 });
 
 App.Transaction = DS.Model.extend({
