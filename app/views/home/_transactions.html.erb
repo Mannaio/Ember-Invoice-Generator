@@ -87,8 +87,8 @@
         <tr>
           <td>{{input valueBinding=name}}</td>
           <td><button {{action "save"}}> Send </button></td>
-          <td></td>
-          <td></td>
+          <td>Num Trans {{numberTransactions}}</td>
+          <td>Trans Selected {{transactionsChecked}}</td>
         </tr>
         {{#each model.transactions}}
           <tr>
@@ -105,19 +105,20 @@
             <td>{{input type="checkbox" value="isChecked" checked=isChecked}}</td>
             <td>{{view Em.TextField type="number" min="1" value=quantita}}</td>
             <td>{{view Ember.Select prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" value=tariffa}}</td>
-            <td>{{lordo}}</td>
+            <td>{{netto}}</td>
             <td>{{view Ember.Select prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" value=iva}}</td>
             <td>{{ivamount}}</td>
-            <td>{{netto}}</td>
+            <td>{{lordo}}</td>
           </tr>
          {{/each}}
          <tr>
-          <td><button {{action "add"}}>Add New Transaction</button></td>
-          <td></td>
-          <td>Total Lordo</td>
+          <td><button {{action "add"}}>Add</button></td>
+          <td><button {{action "remove"}}>Remove</button></td>
+          <td>Total</td>
           <td>{{transactionsAmounts}}</td>
           <td>Total Iva</td>
           <td>{{transactionsIvas}}</td>
+          <td></td>
          </tr>
       </div>
   </script>

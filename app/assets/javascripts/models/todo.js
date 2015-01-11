@@ -1,19 +1,19 @@
 App.Fattura = DS.Model.extend({
   name                : DS.attr('string'),
   transactions        : DS.hasMany('transaction', {async:true}),
-  transactionsAmounts : 0,
-  transactionsIvas    : 0,
+  transactionsAmounts : DS.attr('string'),
+  transactionsIvas    : DS.attr('string'),
   setTransactionAmount : function(){
     if(this.get("transactions.length")>0){
       this.get("transactions").then(function(transactions){
         var sum=0;
         transactions.forEach(function(transaction){
-           sum+=transaction.get("lordo");
+           sum+=transaction.get("netto");
         });
         this.set("transactionsAmounts",sum);
       }.bind(this));
     }
-  }.observes('transactions.length', 'transactions.@each.lordo'),
+  }.observes('transactions.length', 'transactions.@each.netto'),
   setTransactionIva: function(){
     if(this.get("transactions.length")>0){
       this.get("transactions").then(function(transactions){
@@ -28,15 +28,15 @@ App.Fattura = DS.Model.extend({
 });
 
 App.Transaction = DS.Model.extend({
+  isChecked       : DS.attr('boolean'),
   quantita        : DS.attr('string'),
   tariffa         : DS.attr('string'),
-  lordo           : DS.attr('string'),
+  netto           : DS.attr('string'),
   iva             : DS.attr('string'),
   ivamount        : DS.attr('string'),
   netto           : DS.attr('string'),
-  total           : DS.attr('string'),
+  lordo           : DS.attr('string'),
   fattura         : DS.belongsTo('fattura'),
-  isChecked       : DS.attr('boolean'),
   updateLordo: function() {
 
   // get the reference to the values of fare and quantity
@@ -48,44 +48,44 @@ App.Transaction = DS.Model.extend({
   if (isNaN(quantita)) { quantita = 0; }
 
   // calculate
-  var lordo = tariffa * quantita;
+  var netto = tariffa * quantita;
 
   // set the lordo
-  this.set('lordo', lordo);
+  this.set('netto', netto);
 
 }.observes('quantita', 'tariffa'),
 
   updateIva: function(){
 
   var iva = this.get('iva'),
-      lordo = this.get('lordo');
+      netto = this.get('netto');
 
   // massage them to make sure your stuff is not gonna break
-  if (isNaN(lordo)) { lordo = 0; }
+  if (isNaN(netto)) { netto = 0; }
   if (isNaN(iva)) { iva = 0; }
 
   // calculate
-  var ivamount = iva * lordo;
+  var ivamount = iva * netto;
 
   // set the lordo
   this.set('ivamount', ivamount);
 
 
-  }.observes('iva', 'lordo'),
+  }.observes('iva', 'netto'),
 
   updateRisultato: function(){
 
   var ivamount = this.get('ivamount'),
-      lordo    = this.get('lordo');
+      netto    = this.get('netto');
 
   if (isNaN(ivamount)) {ivamount = 0;}
-  if (isNaN(lordo)) {lordo = 0;}
+  if (isNaN(netto)) {netto = 0;}
 
-  var netto = ivamount + lordo
+  var lordo = ivamount + netto
 
-  this.set('netto', netto);
+  this.set('lordo', lordo);
 
-  }.observes('ivamount', 'lordo')
+  }.observes('ivamount', 'netto')
 
 });
 

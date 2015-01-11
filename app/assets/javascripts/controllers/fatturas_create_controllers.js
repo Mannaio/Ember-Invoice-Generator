@@ -28,6 +28,11 @@ App.FatturasCreateController=Ember.ObjectController.extend({
       return this.get("model.transactions").addObject(transactionRecord);
     },
 
+    remove: function() {
+      var allSelectedItems = this.get("model.transactions").filterBy("isChecked", true);
+      return this.get('model.transactions').removeObjects(allSelectedItems);
+    },
+
     save: function () {
       // save and commit
       var newFattura = this.get('model');
@@ -36,7 +41,15 @@ App.FatturasCreateController=Ember.ObjectController.extend({
       this.transitionToRoute('fattura', newFattura);
     },
 
-  }
+  },
+
+  transactionsChecked: function() {
+    return this.get("model.transactions").filterBy("isChecked", true).get("length");
+  }.property("model.transactions.@each.isChecked"),
+
+  numberTransactions: function() {
+    return this.get("model.transactions").filterBy("isChecked", false).get("length");
+  }.property("model.transactions.@each"),
 
 });
 
