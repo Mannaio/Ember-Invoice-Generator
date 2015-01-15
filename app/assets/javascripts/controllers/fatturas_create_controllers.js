@@ -22,16 +22,25 @@ App.FatturasCreateController=Ember.ObjectController.extend({
  
       var transactionRecord = this.store.createRecord('transaction', {
         name: 'new transaction',
-        isChecked: false
+        isChecked: false,
       });
       
       return this.get("model.transactions").addObject(transactionRecord);
     },
 
+    // remove: function() {
+    //   var allSelectedItems = this.get("model.transactions").filterBy("isChecked", true);
+    //   return this.get('model.transactions').removeObjects(allSelectedItems).deleteRecord();
+    // },
     remove: function() {
       var allSelectedItems = this.get("model.transactions").filterBy("isChecked", true);
-      return this.get('model.transactions').removeObjects(allSelectedItems);
+      this.get('model.transactions').removeObjects(allSelectedItems);
+
+      allSelectedItems.forEach(function(item) {
+          item.deleteRecord();
+      });
     },
+
 
     save: function () {
       // save and commit

@@ -30,7 +30,11 @@ App.FatturaEditController = Ember.ObjectController.extend({
 
     remove: function() {
       var allSelectedItems = this.get("model.transactions").filterBy("isChecked", true);
-      return this.get('model.transactions').removeObjects(allSelectedItems);
+      this.get('model.transactions').removeObjects(allSelectedItems);
+
+      allSelectedItems.forEach(function(item) {
+          item.deleteRecord();
+      });
     },
 
     save: function () {
