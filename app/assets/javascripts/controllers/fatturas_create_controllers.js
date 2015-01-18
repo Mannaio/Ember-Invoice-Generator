@@ -22,7 +22,7 @@ App.FatturasCreateController=Ember.ObjectController.extend({
  
       var transactionRecord = this.store.createRecord('transaction', {
         name: 'new transaction',
-        isChecked: false,
+        isChecked: false
       });
       
       return this.get("model.transactions").addObject(transactionRecord);
@@ -40,7 +40,6 @@ App.FatturasCreateController=Ember.ObjectController.extend({
           item.deleteRecord();
       });
     },
-
 
     save: function () {
       // save and commit

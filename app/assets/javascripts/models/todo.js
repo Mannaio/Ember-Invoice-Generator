@@ -4,28 +4,41 @@ App.Fattura = DS.Model.extend({
   transactionsAmounts : DS.attr('string'),
   transactionsIvas    : DS.attr('string'),
   setTransactionAmount : function(){
-    if(this.get("transactions.length")>0){
+    if(!this.get('isDeleted') && this.get("transactions.length") > 0){
       this.get("transactions").then(function(transactions){
         var sum=0;
         transactions.forEach(function(transaction){
-           sum+=transaction.get("netto");
+          if(!transaction.get('isDeleted'))
+          {
+            sum += transaction.get("netto");
+          }
         });
-        this.set("transactionsAmounts",sum);
+        if(!this.get('isDeleted'))
+        {
+          this.set("transactionsAmounts",sum);
+        }
       }.bind(this));
     }
   }.observes('transactions.length', 'transactions.@each.netto'),
   setTransactionIva: function(){
-    if(this.get("transactions.length")>0){
+    if(!this.get('isDeleted') && this.get("transactions.length") > 0){
       this.get("transactions").then(function(transactions){
         var sum=0;
         transactions.forEach(function(transaction){
-           sum+=transaction.get("ivamount");
+          if(!transaction.get('isDeleted'))
+          {
+            sum += transaction.get("ivamount");
+          }
         });
-        this.set("transactionsIvas",sum);
+        if(!this.get('isDeleted'))
+        {
+          this.set("transactionsAmounts",sum);
+        }
       }.bind(this));
     }
   }.observes('transactions.length', 'transactions.@each.ivamount'),
 });
+
 
 App.Transaction = DS.Model.extend({
   isChecked       : DS.attr('boolean'),

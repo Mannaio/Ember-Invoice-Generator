@@ -55,10 +55,10 @@
               <tr>
                 <td>{{quantita}}</td>
                 <td>{{tariffa}}</td>
-                <td>{{lordo}}</td>
+                <td>{{netto}}</td>
                 <td>{{iva}}</td>
                 <td>{{ivamount}}</td>
-                <td>{{netto}}</td>
+                <td>{{lordo}}</td>
               </tr>
             {{/each}}
               <tr>
@@ -91,6 +91,7 @@
           <td>Trans Selected {{transactionsChecked}}</td>
         </tr>
         {{#each model.transactions}}
+          {{#unless isDeleted}}
           <tr>
             <td>Seleeziona</td>
             <td>Merce</td>
@@ -110,6 +111,7 @@
             <td>{{ivamount}}</td>
             <td>{{lordo}}</td>
           </tr>
+          {{/unless}}
          {{/each}}
          <tr>
           <td><button {{action "add"}}>Add</button></td>
