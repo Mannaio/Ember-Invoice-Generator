@@ -1,7 +1,28 @@
+<script type="text/x-handlebars" id='show'>
+    <div class="large-12 columns">
+
+      <ul class="fatturas-listing">
+          {{#each fattura in model}}
+            {{#unless isDeleted}}
+            <li>
+                {{#link-to "fattura" fattura}}
+                    {{fattura.name}}
+                {{/link-to}}
+            </li>
+            {{else}}
+            <li>no fatturas… :(</li>
+            {{/unless}}
+          {{/each}}
+        </ul>
+    </div>
+    {{outlet}}
+  </script>
+
  <script type="text/x-handlebars" id='fatturas'>
   <div class="row">
       <div class="large-12 columns">
         {{#link-to "fatturas.create" class="create-btn"}} Add Fattura {{/link-to}}
+        {{#link-to "show" class="create-btn"}} Show Fatturas {{/link-to}}
       </div>
 
       <div class="large-12 columns">
