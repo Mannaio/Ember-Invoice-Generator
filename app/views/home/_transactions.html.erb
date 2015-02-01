@@ -1,36 +1,7 @@
-<script type="text/x-handlebars" id='show'>
-    <div class="large-12 columns">
-
-      <ul class="fatturas-listing">
-          {{#each fattura in model}}
-            {{#unless isDeleted}}
-            <li>
-                {{#link-to "fattura" fattura}}
-                    {{fattura.name}}
-                {{/link-to}}
-            </li>
-            {{else}}
-            <li>no fatturas… :(</li>
-            {{/unless}}
-          {{/each}}
-        </ul>
-    </div>
-    {{outlet}}
-  </script>
-
- <script type="text/x-handlebars" id='fatturas'>
+ <script type="text/x-handlebars" data-template-name="index">
   <div class="row">
-      <div class="large-12 columns">
-        {{#link-to "fatturas.create" class="create-btn"}} Add Fattura {{/link-to}}
-        {{#link-to "show" class="create-btn"}} Show Fatturas {{/link-to}}
-      </div>
-
-      <div class="large-12 columns">
-        Fatturas: {{fatturasCount}}
-      </div>
-
-      <div class="large-12 columns">
-
+    <div class="large-6 columns">
+      <h3>View Invoices</h3>        
         <ul class="fatturas-listing">
             {{#each fattura in model}}
             <li>
@@ -42,57 +13,102 @@
             <li>no fatturas… :(</li>
             {{/each}}
         </ul>
-      </div>
-      
-      {{outlet}}
+    </div>
+    <div class="large-6 columns">
+      <h3>Edit Invoices</h3>       
+        <ul class="fatturas-listing">
+            {{#each fattura in model}}
+            <li>
+                {{#link-to "fattura.edit" fattura}}
+                    {{fattura.name}}
+                {{/link-to}}
+            </li>
+            {{else}}
+            <li>no fatturas… :(</li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="large-12 columns">
+      Fatturas: {{fatturasCount}}
+    </div>
+    <div class="large-12 columns">
+      {{#link-to "fatturas.create" class="create-btn"}} Add Fattura {{/link-to}}
+    </div>     
   </div>
   </script>
 
   <!-- single fattura template -->
   <script type="text/x-handlebars" id="fattura">
-      <div class="fattura-profile">
-          {{#if deleteMode}}
-          <div class="confirm-box">
-              <h5>Really?</h5>
-              <button {{action "confirmDelete"}}> yes </button>
-              <button {{action "cancelDelete"}}> no </button>
-          </div>
-          {{/if}}
-
-          <button {{action "edit"}}>Edit</button>
-          <button {{action "delete"}}>Delete</button>
-
-          <h2>{{name}}</h2>
-          <table>
-            <tr>
-              <th>Quantita</th>
-              <th>Tariffa</th>
-              <th>Totale</th>
-              <th>Iva %</th>
-              <th>Iva</th>
-              <th>Totale + Iva</th>
-            </tr>
-            {{#each transactions}}
-              <tr>
-                <td>{{quantita}}</td>
-                <td>{{tariffa}}</td>
-                <td>{{netto}}</td>
-                <td>{{iva}}</td>
-                <td>{{ivamount}}</td>
-                <td>{{lordo}}</td>
-              </tr>
-            {{/each}}
-              <tr>
-                <td></td>
-                <td>Total Lordo</td>
-                <td>{{transactionsAmounts}}</td>
-                <td>Total Iva</td>
-                <td>{{transactionsIvas}}</td>
-                <td></td>
-              </tr>
-          </table>
-
+    <div class="row">
+      <div class="large-4 columns">
+        <h1>Logo</h1>
       </div>
+      <div class="large-8 columns">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <p>Intestazione Società - GETHER S.a.S. di Colotto Filippo & C.</p>
+        <p>Piazza Pinelli 9/3 – 16124 - Genova] [010.8904437] [filippocolotto@gethersas.it]</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-8 columns">
+        <ul class="vcard">
+          <li class="fn">Filippo Colotto</li>
+          <li class="street-address">123 Indirizzo</li>
+          <li class="locality">Genova</li>
+          <li><span class="state">Codice Postale</span>, <span class="zip">12345</span></li>
+          <li class="email"><a href="#">myemail@example.com</a></li>
+        </ul>
+      </div>
+      <div class="large-4 columns">
+        <dl>
+          <dt>Fattura n. XX</dt>
+          <dd>DD/MM/YYYY</dd>
+        </dl>
+      </div>
+      <div class="large-12 columns">
+        <h2>{{name}}</h2>
+      </div>
+      <div class="large-12 columns">
+        <table>
+          <tr>
+            <th>Quantita</th>
+            <th>Tariffa</th>
+            <th>Totale</th>
+            <th>Iva %</th>
+            <th>Iva</th>
+            <th>Totale + Iva</th>
+          </tr>
+          {{#each transactions}}
+          <tr>
+            <td>{{quantita}}</td>
+            <td>{{tariffa}}</td>
+            <td>{{netto}}</td>
+            <td>{{iva}}</td>
+            <td>{{ivamount}}</td>
+            <td>{{lordo}}</td>
+          </tr>
+          {{/each}}
+          <tr>
+            <td></td>
+            <td>Total Lordo</td>
+            <td>{{transactionsAmounts}}</td>
+            <td>Total Iva</td>
+            <td>{{transactionsIvas}}</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <div class="large-12 columns">
+        {{#link-to "index"}}
+          Go Back to the Fatturas List
+        {{/link-to}}
+      </div>
+    </div>
       
       {{outlet}}
   </script>
@@ -100,19 +116,28 @@
   <!-- single Fattura edit template - also used by the create route -->
 
   <script type="text/x-handlebars" id="fattura/edit">
-      <div class="fattura-edit">
-       <table class="table table-bordered table-hover">
-        <tr>
-          <th>Nome Fattura</th>
-        </tr>
-        <tr>
-          <td>{{input valueBinding=name}}</td>
-          <td><button {{action "save"}}> Send </button></td>
-          <td>Num Trans {{numberTransactions}}</td>
-          <td>Trans Selected {{transactionsChecked}}</td>
-        </tr>
-        {{#each model.transactions}}
-          {{#unless isDeleted}}
+    <div class="row">
+      {{#if deleteMode}}
+      <div class="confirm-box">
+          <h5>Really?</h5>
+          <button {{action "confirmDelete"}}> yes </button>
+          <button {{action "cancelDelete"}}> no </button>
+      </div>
+      {{/if}}
+      <div class="large-12 columns">
+        <table class="table table-bordered table-hover">
+          <tr>
+            <th>Nome Fattura</th>
+          </tr>
+          <tr>
+            <td>{{input valueBinding=name}}</td>
+            <td><button {{action "save"}}> Send </button></td>
+            <td><button {{action "delete"}}> Delete </button></td>
+            <td>Num Trans {{numberTransactions}}</td>
+            <td>Trans Selected {{transactionsChecked}}</td>
+          </tr>
+          {{#each model.transactions}}
+            {{#unless isDeleted}}
           <tr>
             <td>Seleeziona</td>
             <td>Merce</td>
@@ -133,8 +158,8 @@
             <td>{{lordo}}</td>
           </tr>
           {{/unless}}
-         {{/each}}
-         <tr>
+          {{/each}}
+          <tr>
           <td><button {{action "add"}}>Add</button></td>
           <td><button {{action "remove"}}>Remove</button></td>
           <td>Total</td>
@@ -142,7 +167,8 @@
           <td>Total Iva</td>
           <td>{{transactionsIvas}}</td>
           <td></td>
-         </tr>
+          </tr>
+        </table>
       </div>
   </script>
 

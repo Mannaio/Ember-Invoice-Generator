@@ -10,29 +10,21 @@ App.Router.map(function(){
 
     // this is our 404 error route - see MissingRoute just bellow
     this.route('missing', { path: '/*path' });
-    this.route('show');
 
 });
         
+// App.IndexRoute = Ember.Route.extend({
+//   redirect: function(){
+//     this.transitionTo('fatturas');
+//   }
+// });
+
 App.IndexRoute = Ember.Route.extend({
-  redirect: function(){
-    this.transitionTo('fatturas');
-  }
-});
-
-App.ShowRoute = Ember.Route.extend({
     model: function(){
         return this.store.find('fattura');
     }
 });
-
-App.FatturasRoute = Ember.Route.extend({
-    model: function(){
-        return this.store.find('fattura');
-    }
-});
-
-        
+       
 // singe user edit form route
 App.FatturaEditRoute = Em.Route.extend({
     model: function(){ 

@@ -32,7 +32,7 @@ App.Fattura = DS.Model.extend({
         });
         if(!this.get('isDeleted'))
         {
-          this.set("transactionsAmounts",sum);
+          this.set("transactionsIvas",sum);
         }
       }.bind(this));
     }

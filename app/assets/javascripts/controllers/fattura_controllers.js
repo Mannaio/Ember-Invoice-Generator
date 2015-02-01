@@ -28,7 +28,7 @@ App.FatturaController = Ember.ObjectController.extend({
             this.get('model').deleteRecord();
           }
           // and then go to the fatturas route
-          this.transitionToRoute('fatturas');
+          this.transitionToRoute('index');
           // set deleteMode back to false
           this.set('deleteMode', false);
         },

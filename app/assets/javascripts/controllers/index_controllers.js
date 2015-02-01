@@ -1,4 +1,4 @@
-App.FatturasController=Ember.ArrayController.extend({
+App.IndexController=Ember.ArrayController.extend({
 
    // selectContentTariffa: null,
    // selectContentIva: null,
