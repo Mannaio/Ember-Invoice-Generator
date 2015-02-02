@@ -12,12 +12,7 @@ App.Router.map(function(){
     this.route('missing', { path: '/*path' });
 
 });
-        
-// App.IndexRoute = Ember.Route.extend({
-//   redirect: function(){
-//     this.transitionTo('fatturas');
-//   }
-// });
+    
 
 App.IndexRoute = Ember.Route.extend({
     model: function(){

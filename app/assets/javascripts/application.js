@@ -19,4 +19,4 @@
 
 App = Ember.Application.create();
 
-$(function(){ $(document).foundation(); });
+// $(function(){ $(document).foundation(); });

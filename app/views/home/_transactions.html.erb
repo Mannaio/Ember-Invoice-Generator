@@ -83,15 +83,15 @@
             <th>Iva</th>
             <th>Totale + Iva</th>
           </tr>
-          {{#each transactions}}
-          <tr>
-            <td>{{quantita}}</td>
-            <td>{{tariffa}}</td>
-            <td>{{netto}}</td>
-            <td>{{iva}}</td>
-            <td>{{ivamount}}</td>
-            <td>{{lordo}}</td>
-          </tr>
+          {{#each model.transactions}}
+            <tr>
+              <td>{{quantita}}</td>
+              <td>{{tariffa}}</td>
+              <td>{{netto}}</td>
+              <td>{{iva}}</td>
+              <td>{{ivamount}}</td>
+              <td>{{lordo}}</td>
+            </tr>
           {{/each}}
           <tr>
             <td></td>
@@ -157,7 +157,7 @@
             <td>{{ivamount}}</td>
             <td>{{lordo}}</td>
           </tr>
-          {{/unless}}
+            {{/unless}}
           {{/each}}
           <tr>
           <td><button {{action "add"}}>Add</button></td>
