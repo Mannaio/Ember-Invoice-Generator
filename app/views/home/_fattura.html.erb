@@ -1,0 +1,75 @@
+  <!-- single fattura template -->
+  <script type="text/x-handlebars" id="fattura">
+    <div class="row">
+      <div class="large-4 columns">
+        <h1>Logo</h1>
+      </div>
+      <div class="large-8 columns">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <p>Intestazione Società - GETHER S.a.S. di Colotto Filippo & C.</p>
+        <p>Piazza Pinelli 9/3 – 16124 - Genova] [010.8904437] [filippocolotto@gethersas.it]</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-8 columns">
+        <ul class="vcard">
+          <li class="fn">Filippo Colotto</li>
+          <li class="street-address">123 Indirizzo</li>
+          <li class="locality">Genova</li>
+          <li><span class="state">Codice Postale</span>, <span class="zip">12345</span></li>
+          <li class="email"><a href="#">myemail@example.com</a></li>
+        </ul>
+      </div>
+      <div class="large-4 columns">
+        <dl>
+          <dt>Fattura n. XX</dt>
+          <dd>DD/MM/YYYY</dd>
+        </dl>
+      </div>
+      <div class="large-12 columns">
+        <h2>{{name}}</h2>
+      </div>
+      <div class="large-12 columns">
+        <table>
+          <tr>
+            <th>Quantita</th>
+            <th>Tariffa</th>
+            <th>Totale</th>
+            <th>Iva %</th>
+            <th>Iva</th>
+            <th>Totale + Iva</th>
+          </tr>
+          {{#each model.transactions}}
+            <tr>
+              <td>{{quantita}}</td>
+              <td>{{tariffa}}</td>
+              <td>{{netto}}</td>
+              <td>{{iva}}</td>
+              <td>{{ivamount}}</td>
+              <td>{{lordo}}</td>
+            </tr>
+          {{/each}}
+          <tr>
+            <td></td>
+            <td>Total Lordo</td>
+            <td>{{transactionsAmounts}}</td>
+            <td>Total Iva</td>
+            <td>{{transactionsIvas}}</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <div class="large-12 columns">
+        {{#link-to "index"}}
+          Go Back to the Fatturas List
+        {{/link-to}}
+      </div>
+    </div>
+      
+      {{outlet}}
+  </script>
