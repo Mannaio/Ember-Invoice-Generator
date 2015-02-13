@@ -1,8 +1,21 @@
+App.IsodateTransform = DS.Transform.extend({  
+  deserialize: function(serialized) {
+    return Ember.isEmpty(serialized) ? null : moment(serialized, 'YYYY-MM-DD').toDate().toISOString();
+  },
+  serialize: function(deserialized) {
+    return Ember.isEmpty(deserialized) ? null : moment(deserialized).format('YYYY-MM-DD');
+  }
+});
+
+App.register('transform:isodate', App.IsodateTransform);  
+
+
 App.Fattura = DS.Model.extend({
   name                : DS.attr('string'),
   transactions        : DS.hasMany('transaction', {async:true}),
   transactionsAmounts : DS.attr('string'),
   transactionsIvas    : DS.attr('string'),
+  theDate             : DS.attr("isodate"),
   setTransactionAmount : function(){
     if(!this.get('isDeleted') && this.get("transactions.length") > 0){
       this.get("transactions").then(function(transactions){

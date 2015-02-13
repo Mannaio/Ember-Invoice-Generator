@@ -54,5 +54,8 @@
           <td></td>
           </tr>
         </table>
+        <strong>Date Valid:</strong>
+        <span {{bind-attr class="isValid:good:bad"}}>{{isValid}}</span>
+          {{date-mask inputValidator="validateDate" value=theDate validState=validState}}
       </div>
   </script>

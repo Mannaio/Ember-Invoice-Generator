@@ -1,6 +1,9 @@
 // Fattura creation form controller
 App.FatturasCreateController=Ember.ObjectController.extend({
 
+  dateDisplay: "",
+  isValid: false,
+
   selectContentTariffa: [
      {label: "180", value: "180"},
      {label: "200", value: "200"},
@@ -12,6 +15,14 @@ App.FatturasCreateController=Ember.ObjectController.extend({
      {label: "10%", value: "0.1"},
      {label: "22%", value: "0.22"}
   ],
+
+  validState: (function() {
+    if (this.get("isValid")) {
+      return "has-success";
+    } else {
+      return "has-error";
+    }
+  }).property("isValid"),
 
   actions: {
 
@@ -71,6 +82,20 @@ App.FatturasCreateController=Ember.ObjectController.extend({
       newFattura.save();
       // redirects to the fattura itself
       this.transitionToRoute('index');
+    },
+
+    validateDate: function() {
+      var date;
+      date = moment(this.get("theDate"));
+      if (date.isValid()) {
+        this.set("date", date.toDate());
+        this.set("dateDisplay", date.format("MMM Do YYYY"));
+        return this.set("isValid", true);
+      } else {
+         this.set("date", null);
+        this.set("dateDisplay", "Invalid");
+        return this.set("isValid", false);
+      }
     },
 
   },

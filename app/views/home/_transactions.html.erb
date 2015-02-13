@@ -37,6 +37,11 @@
   </div>
   </script>
 
-
+  <script type="text/x-handlebars" data-template-name="components/date-mask">
+    <div {{bind-attr class="form-group validState"}}>
+      {{input class="date form-control" value=value}}
+      <p class="info">*Format: YYYY-MM-DD</p>
+    </div>
+  </script>
 
 

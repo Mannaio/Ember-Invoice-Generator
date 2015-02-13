@@ -16,6 +16,8 @@
 //= require ember-data
 //= require_self
 //= require todos
+//= require jquery.maskedinput
+//= require moment
 
 App = Ember.Application.create();
 

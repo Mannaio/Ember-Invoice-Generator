@@ -1,20 +1,28 @@
 // single fattura edit form controller
 App.FatturaEditController = Ember.ObjectController.extend({
 
-  // selectContentTariffa: null,
-  // selectContentIva: null,
+  dateDisplay: "",
+  isValid: false,
 
   selectContentTariffa: [
-   {label: "180", value: "180"},
-   {label: "200", value: "200"},
-   {label: "300", value: "300"}
+     {label: "180", value: "180"},
+     {label: "200", value: "200"},
+     {label: "300", value: "300"}
   ],
 
   selectContentIva: [
-   {label: "4%",  value: "0.04"},
-   {label: "10%", value: "0.1"},
-   {label: "22%", value: "0.22"}
+     {label: "4%",  value: "0.04"},
+     {label: "10%", value: "0.1"},
+     {label: "22%", value: "0.22"}
   ],
+
+  validState: (function() {
+    if (this.get("isValid")) {
+      return "has-success";
+    } else {
+      return "has-error";
+    }
+  }).property("isValid"),
 
   actions: {
 
@@ -61,10 +69,9 @@ App.FatturaEditController = Ember.ObjectController.extend({
       if(!model.get('isDeleted'))
       {
         this.get('model').deleteRecord();
-        this.get('model').save();
-        this.transitionToRoute('index');
       }
       // and then go to the fatturas route
+      this.transitionToRoute('index');
       // set deleteMode back to false
       this.set('deleteMode', false);
     },
@@ -77,6 +84,20 @@ App.FatturaEditController = Ember.ObjectController.extend({
       this.transitionToRoute('index');
     },
 
+    validateDate: function() {
+      var date;
+      date = moment(this.get("theDate"));
+      if (date.isValid()) {
+        this.set("date", date.toDate());
+        this.set("dateDisplay", date.format("MMM Do YYYY"));
+        return this.set("isValid", true);
+      } else {
+         this.set("date", null);
+        this.set("dateDisplay", "Invalid");
+        return this.set("isValid", false);
+      }
+    },
+
   },
 
   transactionsChecked: function() {
@@ -86,6 +107,5 @@ App.FatturaEditController = Ember.ObjectController.extend({
   numberTransactions: function() {
     return this.get("model.transactions").filterBy("isChecked", false).get("length");
   }.property("model.transactions.@each"),
-
 
 });
