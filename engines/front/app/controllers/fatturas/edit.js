@@ -1,5 +1,6 @@
+
+/* global moment*/
 import Ember from 'ember';
-import moment from 'ember-moment/computed';
 
 export default Ember.ObjectController.extend({
   dateDisplay: "",

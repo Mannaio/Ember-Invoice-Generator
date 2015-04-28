@@ -13,7 +13,6 @@
     "ember-qunit-notifications": "0.0.7",
     "qunit": "~1.17.1",
     "momentjs": "~2.10.2",
-    "ember-cli-moment-shim": "~0.1.0",
     "jquery.maskedinput": "~1.4.1"
   }
 }
