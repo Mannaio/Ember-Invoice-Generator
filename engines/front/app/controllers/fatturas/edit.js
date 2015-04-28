@@ -54,24 +54,29 @@ export default Ember.ObjectController.extend({
     },
 
     confirmDelete: function() {
+      var self = this;
       var transactions = this.get('model.transactions'),
           list = transactions.toArray();
       list.forEach(function(transaction) {
         if (!transaction.get('isDeleted'))
         {
           transaction.deleteRecord();
-          transactions.removeObject();
+          transactions.removeObject(transaction);
         }
       });
       var model = this.get('model');
       if(!model.get('isDeleted'))
       {
-        this.get('model').deleteRecord();
+        this.get('model').destroyRecord().then(function(){
+          self.transitionToRoute('index');
+          self.set('deleteMode', false);
+        });
+        return
       }
+
+      self.transitionToRoute('index');
+      self.set('deleteMode', false);
       // and then go to the fatturas route
-      this.transitionToRoute('index');
-      // set deleteMode back to false
-      this.set('deleteMode', false);
     },
 
     save: function () {
