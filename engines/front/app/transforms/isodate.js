@@ -1,6 +1,6 @@
+/* global moment*/
 import DS from "ember-data";
 import Ember from 'ember';
-import moment from 'ember-moment/computed';
 
 export default DS.Transform.extend({
   deserialize: function(serialized) {
