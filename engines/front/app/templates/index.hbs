@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="large-6 columns">
+      <h3>View Invoices</h3>
+        <ul class="fatturas-listing">
+            {{#each fattura in model}}
+            <li>
+                {{#link-to "fatturas.show" fattura}}
+                    {{fattura.name}}
+                {{/link-to}}
+            </li>
+            {{else}}
+            <li>no fatturas… :(</li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="large-6 columns">
+      <h3>Edit Invoices</h3>
+        <ul class="fatturas-listing">
+            {{#each fattura in model}}
+            <li>
+                {{#link-to "fatturas.edit" fattura}}
+                    {{fattura.name}}
+                {{/link-to}}
+            </li>
+            {{else}}
+            <li>no fatturas… :(</li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="large-12 columns">
+      Fatturas: {{fatturasCount}}
+    </div>
+    <div class="large-12 columns">
+      {{#link-to "fatturas.create" class="create-btn"}} Add Fattura {{/link-to}}
+    </div>
+  </div>

@@ -1,0 +1,58 @@
+    <div class="row">
+      {{#if deleteMode}}
+          <div class="confirm-box">
+              <h5>Really?</h5>
+              <button {{action "confirmDelete"}}> yes </button>
+              <button {{action "cancelDelete"}}> no </button>
+          </div>
+      {{/if}}
+      <div class="large-12 columns">
+        <table class="table table-bordered table-hover">
+          <tr>
+            <th>Nome Fattura</th>
+          </tr>
+          <tr>
+            <td>{{input value=name}}</td>
+            <td><button {{action "save"}}> Send </button></td>
+            <td><button {{action "delete"}}> Delete </button></td>
+            <td>Num Trans {{numberTransactions}}</td>
+            <td>Trans Selected {{transactionsChecked}}</td>
+          </tr>
+          {{#each transaction in model.transactions}}
+            {{#unless transaction.isDeleted}}
+              <tr>
+                <td>Seleeziona</td>
+                <td>Merce</td>
+                <td>Tariffa</td>
+                <td>Totale</td>
+                <td>Iva %</td>
+                <td>Iva</td>
+                <td>Totale</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>{{input type="checkbox" checked=transaction.isChecked}}</td>
+                <td>{{input type="number" min="1" value=transaction.quantita}}</td>
+                <td>{{view "select" prompt="Tariffa" content=controller.selectContentTariffa optionValuePath="content.value" optionLabelPath="content.label" value=transaction.tariffa}}</td>
+                <td>{{transaction.netto}}</td>
+                <td>{{view "select" prompt="Iva" content=controller.selectContentIva optionValuePath="content.value" optionLabelPath="content.label" value=transaction.iva}}</td>
+                <td>{{transaction.ivamount}}</td>
+                <td>{{transaction.lordo}}</td>
+              </tr>
+                {{/unless}}
+          {{/each}}
+          <tr>
+          <td><button {{action "add"}}>Add</button></td>
+          <td><button {{action "remove"}}>Remove</button></td>
+          <td>Total</td>
+          <td>{{transactionsAmounts}}</td>
+          <td>Total Iva</td>
+          <td>{{transactionsIvas}}</td>
+          <td></td>
+          </tr>
+        </table>
+        <strong>Date Valid:</strong>
+        <span {{bind-attr class="isValid:good:bad"}}>{{isValid}}</span>
+          {{date-mask inputValidator="validateDate" value=theDate validState=validState}}
+      </div>
+    </div>
