@@ -61,14 +61,6 @@ var Transaction = DS.Model.extend({
 });
 
 Transaction.reopenClass({
-  FIXTURES: [
-    {
-      id            : '1',
-      quantita      : null,
-      lordo         : null,
-      ivamount      : null,
-      risulatofinale: null
-    }
-  ]
+  FIXTURES: []
 });
 export default Transaction;

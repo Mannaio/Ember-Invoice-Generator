@@ -43,13 +43,7 @@ var Fattura = DS.Model.extend({
 });
 
 Fattura.reopenClass({
-  FIXTURES: [
-    {
-      id          : '1',
-      name        : 'Fattura num 1',
-      transactions: [1]
-    }
-  ]
+  FIXTURES: []
 });
 
 export default Fattura;
